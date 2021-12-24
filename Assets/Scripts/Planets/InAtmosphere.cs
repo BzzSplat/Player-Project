@@ -18,7 +18,9 @@ public class InAtmosphere : MonoBehaviour
 
         if(other.GetComponent<Rigidbody>())
             other.GetComponent<Rigidbody>().useGravity = true;
-        other.gameObject.transform.SetParent(storage.transform, true);
+
+        if(other.gameObject.transform.parent = null)
+            other.gameObject.transform.SetParent(storage.transform, true);
     }
 
     void OnTriggerStay(Collider other)
@@ -35,6 +37,8 @@ public class InAtmosphere : MonoBehaviour
 
         if (other.GetComponent<Rigidbody>())
             other.GetComponent<Rigidbody>().useGravity = false;
-        other.gameObject.transform.parent = null;
+
+        if(other.transform.parent = storage.transform)
+            other.gameObject.transform.parent = null;
     }
 }//use an update (which coems after fixed updates) to add planet velocity to objects in atmosphere, remember to Time.deltaTime

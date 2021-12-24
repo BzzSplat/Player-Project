@@ -1,15 +1,16 @@
-spawn machines from spawn menu
+pick up weapons
+fix miner spam (if you spam the miner it will quickly produce metal)
 
 Fix movement with moving planets
-player velocity = normal velocity + movement vector3
+player velocity = normal velocity + movement vector3 (acceleration problem)
+player velocity = normal velocity - oldMovement then + new movement ("rubberband" problem)
 
 Store Vector3"VelocityNoMove" before applying move or subtract the move from it after 
 velocity has been updated(latter prob better because no override of external force.
 Then before movement is applied set velocity to "VelocityNoMove" then reapply force.
 
 toolbox item, press T to open radial menu to select different tools like welder (later have different tiers of tools, better welded allows for larger durability numbers)
-item spawn menu (gmod spawn menu but different?)
-inventory system
+inventory system (???)
 
 BUILDING:
 ~ placment of machines on planet ground

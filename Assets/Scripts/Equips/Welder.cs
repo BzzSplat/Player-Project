@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Welder : MonoBehaviour
+public class Welder : MonoBehaviour // if ray hti nothing just stop, so no errors
 {
     bool SecondClick = false;
 
@@ -10,6 +10,9 @@ public class Welder : MonoBehaviour
 
     void Update()
     {
+        if (!GetComponent<Weapon>().Holder)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = GetComponent<Weapon>().camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -21,16 +24,20 @@ public class Welder : MonoBehaviour
             else
                 endPoint = ray.GetPoint(1000);
 
-            if (SecondClick == false && hit.transform.gameObject.GetComponent<Rigidbody>())
+            if (hit.transform)
             {
-                obj1 = hit.transform.gameObject;
-                SecondClick = true;
-            }
-            else
-            {
-                obj2 = hit.transform.gameObject;
-                Weld(obj1, obj2);
-                SecondClick = false;
+                if (SecondClick == false && hit.transform.gameObject.GetComponent<Rigidbody>())
+                {
+                    obj1 = hit.transform.gameObject;
+                    SecondClick = true;
+                }
+                else
+                {
+                    obj2 = hit.transform.gameObject;
+                    SecondClick = false;
+                    Weld(obj1, obj2);
+                    Debug.Log("Weld created between " + obj1 + " and " + obj2);
+                }
             }
         }
     }
@@ -38,8 +45,7 @@ public class Welder : MonoBehaviour
     void Weld(GameObject obj1, GameObject obj2)
     {
         
-        obj1.AddComponent<FixedJoint>();
-        obj1.GetComponent<FixedJoint>().connectedBody = obj2.GetComponent<Rigidbody>();
-
+        FixedJoint newJoint = obj1.AddComponent<FixedJoint>();
+        newJoint.connectedBody = obj2.GetComponent<Rigidbody>();
     }
 }

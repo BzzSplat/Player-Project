@@ -12,7 +12,12 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     GameObject RMC, MT1C;
 
-     void Update()
+    private void Start()
+    {
+        rawMetal = 11;
+    }
+
+    void Update()
     {
         RMC.GetComponent<Text>().text = rawMetal.ToString();
         MT1C.GetComponent<Text>().text = metalTier1.ToString();

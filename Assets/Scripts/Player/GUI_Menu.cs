@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GUI_Menu : MonoBehaviour
 {
-    public GameObject cube;
+    [SerializeField]
+    List<GameObject> spawnables = new List<GameObject>();
+    [SerializeField]
+    List<int> spawnCosts = new List<int>();
+
     public new Camera camera;
     public GameObject menuScreen;
     [SerializeField]
     ResourceManager materials;
 
-    public void spawnCube()
+    [SerializeField]
+    Image cross1, cross2;
+
+    public void spawnitem(int index)
     {
-        if (materials.rawMetal <= 0)
+        if (materials.rawMetal < spawnCosts[index])
             return;
 
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -24,8 +32,8 @@ public class GUI_Menu : MonoBehaviour
         else
             endPoint = ray.GetPoint(1000);
 
-        Instantiate(cube, endPoint, Quaternion.identity);
-        materials.rawMetal--;//spawn cost
+        Instantiate(spawnables[index], endPoint, Quaternion.identity);
+        materials.rawMetal -= spawnCosts[index];//spawn cost
     }
 
     void Update()
@@ -42,6 +50,29 @@ public class GUI_Menu : MonoBehaviour
             menuScreen.SetActive(false);
             camera.GetComponent<CamControl>().trapMouse();
             camera.GetComponent<CamControl>().lockCamera = false;
-        } 
+        }
+
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 2f))
+        {
+            if (hit.transform.GetComponent<InteractableObject>())
+            {
+                changeCrosshairColor(Color.green);
+                if (Input.GetKeyDown(KeyCode.E))
+                    hit.transform.GetComponent<InteractableObject>().Interaction();
+            }
+        }
+        else
+        {
+            changeCrosshairColor(Color.white);
+        }
+
+    }
+
+    public void changeCrosshairColor(Color clr)
+    {
+        cross1.color = clr;
+        cross2.color = clr;
     }
 }

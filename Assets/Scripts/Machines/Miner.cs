@@ -6,39 +6,38 @@ using UnityEngine.UI;
 public class Miner : InteractableObject
 {
     public float rawMetals = 0;
-    public bool mining = true;
+    public bool mining = false;
     [SerializeField]
     Text counter;
+    IEnumerator mineCoro;
 
     private void Start()
     {
-        StartCoroutine(Mine());
-        if(mining)
-            counter.text = "Online";
-        else
-            counter.text = "Offline";
+        counter.text = "Stopped\n" + rawMetals.ToString(); ;
+        mineCoro = Mine();
     }
 
     public override void Interaction()
     {
         if (mining) {
             mining = false;
-            StopCoroutine(Mine());
-            counter.text = "Offline";
+            StopCoroutine(mineCoro);
+            counter.text = "Stopped\n" + rawMetals.ToString();
         } else {
             mining = true;
-            StartCoroutine(Mine());
-            counter.text = "Online";
+            StartCoroutine(mineCoro);
+            counter.text = "Mining\n" + rawMetals.ToString();
         }
     }
 
     IEnumerator Mine()
     {
-        while (true)
+        while (mining)
         {
             yield return new WaitForSeconds(5);
-            rawMetals++;
-            counter.text = rawMetals.ToString();
+            if(mining)
+                rawMetals++;
+            counter.text = "Mining\n" + rawMetals.ToString();
         }
         
     }
@@ -49,7 +48,10 @@ public class Miner : InteractableObject
         {
             other.gameObject.GetComponent<ResourceManager>().rawMetal += rawMetals;
             rawMetals = 0;
-            counter.text = rawMetals.ToString();
+            if(mining)
+                counter.text = "Mining\n" + rawMetals.ToString();
+            else
+                counter.text = "Stopped\n" + rawMetals.ToString();
         }
     }
 }

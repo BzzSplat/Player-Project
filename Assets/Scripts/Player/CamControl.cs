@@ -36,12 +36,9 @@ public class CamControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (freeCursor)
-            {
+            if (freeCursor){
                 freeMouse();
-            }
-            else
-            {
+            }else{
                 trapMouse();
             }
         }

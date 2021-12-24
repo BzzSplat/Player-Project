@@ -4819,7 +4819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  power: 1000
+  power: 20000
 --- !u!1 &5450485422803476160
 GameObject:
   m_ObjectHideFlags: 0

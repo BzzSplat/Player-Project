@@ -54,3 +54,4 @@ MonoBehaviour:
   fire2_Projectile: 1
   fire1_Raycast: 0
   fire2_Raycast: 0
+  self: {fileID: 5874930548466731690}
