@@ -22,8 +22,7 @@ public class Weapon : MonoBehaviour
 
     bool pickupable;
 
-    [SerializeField]
-    GameObject selfFab;
+    public GameObject selfFab;
 
     void Update()
     {
@@ -114,13 +113,17 @@ public class Weapon : MonoBehaviour
             if (Items[i] == selfFab)
                 hasSelf = true;
             if (!foundInsert && !Items[i])
+            {
                 insertIndex = i;
+                foundInsert = true;
+            }
+
        }
 
         if (!hasSelf && insertIndex != -1) //if player does not have the item already and if there is space for a new item pick it up
         {
             Items[insertIndex] = selfFab;
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
             
     }

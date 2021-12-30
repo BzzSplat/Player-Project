@@ -70,6 +70,8 @@ public class Equip : MonoBehaviour
             return;
         Debug.Log("Dropping " + CurrentItem);
 
+        int itemIndex = 0;
+
         GameObject dropped = Instantiate(CurrentItem, spawnPos);
         if (CurrentItem)
         {
@@ -77,14 +79,18 @@ public class Equip : MonoBehaviour
             for(int i = 0; i < Items.Count; i++)
             {
                 if (CurrentItem == Items[i])
-                    Items[i] = null;
+                    //Items[i] = null;
+                    itemIndex = i;
             }
         }
 
         dropped.GetComponent<Weapon>().camera = GetComponent<Camera>();
         dropped.GetComponent<Weapon>().dropWeapon();
+        dropped.GetComponent<Weapon>().selfFab = Items[itemIndex]; //do this otherwise it sets selfFab to itself and not the prefab
         dropped.transform.parent = null;
         dropped.GetComponent<Rigidbody>().velocity = GetComponentInParent<Rigidbody>().velocity;
+
+        Items[itemIndex] = null;
 
         SwitchEquip(Items[0]);
     }

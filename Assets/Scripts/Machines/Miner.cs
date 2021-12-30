@@ -10,24 +10,14 @@ public class Miner : InteractableObject
     [SerializeField]
     Text counter;
     IEnumerator mineCoro;
+    [SerializeField]
+    GameObject menu, popup;
+    public GameObject player;
 
     private void Start()
     {
         counter.text = "Stopped\n" + rawMetals.ToString(); ;
         mineCoro = Mine();
-    }
-
-    public override void Interaction()
-    {
-        if (mining) {
-            mining = false;
-            StopCoroutine(mineCoro);
-            counter.text = "Stopped\n" + rawMetals.ToString();
-        } else {
-            mining = true;
-            StartCoroutine(mineCoro);
-            counter.text = "Mining\n" + rawMetals.ToString();
-        }
     }
 
     IEnumerator Mine()
@@ -42,6 +32,24 @@ public class Miner : InteractableObject
         
     }
 
+    public override void Interaction()
+    {
+        popup = popupMenuProducer(menu, player.transform.GetChild(0).GetChild(2).gameObject, 0);
+    }
+
+    /*public override void Interaction()
+    {
+        if (mining) {
+            mining = false;
+            StopCoroutine(mineCoro);
+            counter.text = "Stopped\n" + rawMetals.ToString();
+        } else {
+            mining = true;
+            StartCoroutine(mineCoro);
+            counter.text = "Mining\n" + rawMetals.ToString();
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -53,5 +61,5 @@ public class Miner : InteractableObject
             else
                 counter.text = "Stopped\n" + rawMetals.ToString();
         }
-    }
+    }*/
 }

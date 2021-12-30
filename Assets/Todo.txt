@@ -1,4 +1,5 @@
-pick up weapons
+finish producer popup thingy (spawn it in, don't worry about reuseable stuff right now, just get one working)
+health and more weapons (the raycasts)
 fix miner spam (if you spam the miner it will quickly produce metal)
 
 Fix movement with moving planets
@@ -16,8 +17,12 @@ BUILDING:
 ~ placment of machines on planet ground
 pipes to connect machines (rope tool from gmod)
 ~ materials (energy, metals, gasses, liquids, ect)
-machines that do stuff with items
+machines that do stuff with items (craft items, refine/smelt ores)
 
 SHIP BUILDING:
 machines such as grav generators, thrusters, chairs, ship weapons, FTL drive, ect
+FTL in three types, multiplicitive (multiplies current speed), boost (speed boost in pointing direction), and teleport (set distance and warp)
 no grid based building (bulding stuff like in gmod, maybe alignment tool)
+
+Dictionary/Whatev:
+Resource ID# in order (raw metal, metal T1, )
