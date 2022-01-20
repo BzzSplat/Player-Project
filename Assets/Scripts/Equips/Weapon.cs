@@ -13,6 +13,11 @@ public class Weapon : MonoBehaviour
     public GameObject Projectile2;
     public float Projectile2ThrowForce;
 
+    [SerializeField]
+    float ray1Range, ray1Damage, ray2Range, ray2Damage;
+    [SerializeField]
+    GameObject ray1HitEffect, ray2HitEffect;
+
     public Transform startPos;
     public new Camera camera;
     public GameObject Holder = null;
@@ -29,7 +34,7 @@ public class Weapon : MonoBehaviour
         if (!Holder)//no holder no needs
             return;
 
-        if (camera.GetComponent<CamControl>().lockCamera == true) //if we don't want the camera to move we also probably don't want to be able to shoot
+        if (camera.GetComponent<CamControl>().freeCursor == true) //if we don't want the camera to move we also probably don't want to be able to shoot
             return;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -37,15 +42,23 @@ public class Weapon : MonoBehaviour
             if(fire1_Projectile)
                 ShootProjectile(Projectile1, Projectile1ThrowForce);
             if(fire1_Raycast)
-                Castaray();
+                Castaray(ray1Range, ray1Damage, ray1HitEffect);
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if(fire2_Projectile)
                 ShootProjectile(Projectile2, Projectile2ThrowForce);
             if (fire2_Raycast)
-                Castaray();
+                Castaray(ray2Range, ray2Damage, ray2HitEffect);
         }
+
+        //Thanks to Plai on YouTube
+        float smooth = 16, swayMult = 4;
+        float mouseX = Input.GetAxisRaw("Mouse X") * swayMult, mouseY = Input.GetAxisRaw("Mouse Y") * swayMult;
+        Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
+        Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
+        Quaternion targetRotation = rotationX * rotationY;
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth * Time.deltaTime);
     }
 
 
@@ -62,17 +75,37 @@ public class Weapon : MonoBehaviour
         proj.GetComponent<Rigidbody>().velocity = (camera.transform.forward * throwForce) + Holder.GetComponent<Rigidbody>().velocity;
     }
 
-    void Castaray()
+    void Castaray(float range, float damage, GameObject hitEffect)
     {
-        /*Ray ray = camera.ViewportPointToRay(new Vector3(0, 0.5f, 0.5f));
+        Ray ray = GetComponent<Weapon>().camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
+        Vector3 endPoint;
 
         if (Physics.Raycast(ray, out hit))
             endPoint = hit.point;
         else
             endPoint = ray.GetPoint(1000);
-        Debug.DrawRay(startPos.position, (endPoint - startPos.position), Color.red, 50f);*/
+
+        if (hit.transform)
+        {
+            /*if (hit.transform.GetComponent<Rigidbody>()) //push the object
+            {
+
+            }*/
+
+            if(hit.transform.GetComponent<Health>())
+            {
+                hit.transform.GetComponent<Health>().health -= damage;
+            }
+            else if (hit.transform.GetComponent<Dummy>())
+            {
+                hit.transform.GetComponent<Dummy>().health -= damage;
+            }
+
+            Instantiate(hitEffect, endPoint, Quaternion.identity, hit.transform);
+        }
     }
+
 
     public void dropWeapon() //enable physics stuff
     {

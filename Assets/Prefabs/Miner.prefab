@@ -303,9 +303,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec18098f26f5a0469e6d19be4706499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needsPlayer: 1
+  Player: {fileID: 0}
   rawMetals: 0
-  mining: 1
+  OnOff: 0
   counter: {fileID: 4303871145589167378}
+  menu: {fileID: 8825562994941226089, guid: c314c1c602ee4ab4b98ded6937ccb283, type: 3}
+  popup: {fileID: 0}
+  self: {fileID: 4303871146186697708}
 --- !u!1 &4303871146459251150
 GameObject:
   m_ObjectHideFlags: 0

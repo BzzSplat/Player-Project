@@ -5,18 +5,26 @@ using UnityEngine.UI;
 
 public class GUI_Menu : MonoBehaviour
 {
+    public new Camera camera;
+    public GameObject menuScreen;
+    [SerializeField]
+    ResourceManager materials;
+    [SerializeField]
+    Health playerHealth;
+
+    [Header("Base Components"), SerializeField]
+    Image cross1, cross2, oxygenMeter;
+    [SerializeField]
+    Text health;
+
+
+    [Header("Spawn Menu")]
     [SerializeField]
     List<GameObject> spawnables = new List<GameObject>();
     [SerializeField]
     List<int> spawnCosts = new List<int>();
 
-    public new Camera camera;
-    public GameObject menuScreen;
-    [SerializeField]
-    ResourceManager materials;
 
-    [SerializeField]
-    Image cross1, cross2;
 
     public void spawnitem(int index)
     {
@@ -38,18 +46,19 @@ public class GUI_Menu : MonoBehaviour
 
     void Update()
     {
+        health.text = playerHealth.health.ToString() + "hp";
+        oxygenMeter.fillAmount = playerHealth.oxygen / playerHealth.oxygenMax;
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             menuScreen.SetActive (true);
             camera.GetComponent<CamControl>().freeMouse();
-            camera.GetComponent<CamControl>().lockCamera = true;
         }
             
         if (Input.GetKeyUp(KeyCode.Q))
         {
             menuScreen.SetActive(false);
             camera.GetComponent<CamControl>().trapMouse();
-            camera.GetComponent<CamControl>().lockCamera = false;
         }
 
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -60,7 +69,12 @@ public class GUI_Menu : MonoBehaviour
             {
                 changeCrosshairColor(Color.green);
                 if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (hit.transform.GetComponent<InteractableObject>().needsPlayer)
+                        hit.transform.GetComponent<InteractableObject>().Player = camera.transform.parent.gameObject;
                     hit.transform.GetComponent<InteractableObject>().Interaction();
+                }
+
             }
         }
         else

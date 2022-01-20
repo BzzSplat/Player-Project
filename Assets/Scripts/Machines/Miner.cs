@@ -3,29 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class Miner : InteractableObject
+public class Miner : InteractableObject // instead make this a parent class for all producing machines
 {
     public float rawMetals = 0;
-    public bool mining = false;
+    public bool OnOff = false;
     [SerializeField]
     Text counter;
-    IEnumerator mineCoro;
+    IEnumerator prodCoro;
     [SerializeField]
-    GameObject menu, popup;
-    public GameObject player;
+    GameObject menu, popup, self;
 
     private void Start()
     {
         counter.text = "Stopped\n" + rawMetals.ToString(); ;
-        mineCoro = Mine();
+        prodCoro = Produce();
     }
 
-    IEnumerator Mine()
+    IEnumerator Produce()
     {
-        while (mining)
+        while (OnOff)
         {
             yield return new WaitForSeconds(5);
-            if(mining)
+            if(OnOff)
                 rawMetals++;
             counter.text = "Mining\n" + rawMetals.ToString();
         }
@@ -34,23 +33,32 @@ public class Miner : InteractableObject
 
     public override void Interaction()
     {
-        popup = popupMenuProducer(menu, player.transform.GetChild(0).GetChild(2).gameObject, 0);
+        popup = popupMenuProducer(menu, Player.transform.GetChild(0).GetChild(2).gameObject);
+        popup.GetComponent<ProducerMenu>().setUpMenu(gameObject.name, GetComponent<Miner>(), 0, Player.GetComponent<ResourceManager>());
     }
 
-    /*public override void Interaction()
+    public void toggleProducing()
     {
-        if (mining) {
-            mining = false;
-            StopCoroutine(mineCoro);
+        if (OnOff) {
+            OnOff = false;
+            StopCoroutine(prodCoro);
             counter.text = "Stopped\n" + rawMetals.ToString();
         } else {
-            mining = true;
-            StartCoroutine(mineCoro);
+            OnOff = true;
+            StartCoroutine(prodCoro);
             counter.text = "Mining\n" + rawMetals.ToString();
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void updateDisplay()
+    {
+        if (OnOff)
+            counter.text = "Mining\n" + rawMetals.ToString();
+        else
+            counter.text = "Stopped\n" + rawMetals.ToString();
+    }
+
+    /*private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

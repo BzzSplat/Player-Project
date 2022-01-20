@@ -7,13 +7,11 @@ public class CamControl : MonoBehaviour
     public Transform player;
     public float Sensitivity;
     float xRotation = 0f;
-    bool freeCursor = false;
-    public bool lockCamera = false;
+    public bool freeCursor = true;
     
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        trapMouse();
     }
 
     private void OnGUI()
@@ -23,7 +21,7 @@ public class CamControl : MonoBehaviour
 
     void Update()
     {
-        if (lockCamera)
+        if (freeCursor)
             return;
 
         float mouseX = Input.GetAxis("Mouse X") * Sensitivity * Time.deltaTime;
@@ -49,12 +47,12 @@ public class CamControl : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        freeCursor = false;
+        freeCursor = true;
     }
     public void trapMouse()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        freeCursor = true;
+        freeCursor = false;
     }
 }

@@ -43,7 +43,6 @@ public class Equip : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
             dropItem();
-
     }
 
     void SwitchEquip(GameObject newItem)

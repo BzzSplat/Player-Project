@@ -18,6 +18,7 @@ public class RigidMov : MonoBehaviour
     float x;
     float z;
 
+
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -42,10 +43,7 @@ public class RigidMov : MonoBehaviour
         //if (!(move == new Vector3(0, 0, 0)))
         rb.velocity = move; //idea was to add movement speed, move, remove the movement speed applied before to get original (zero) velocity, then re-apply the force to sto pthe added movment force being 1 then 2 then 3 then so on
         //Debug.Log("Old: " + oldMove + "\tNew: "+move+"\t Velocity: "+rb.velocity);
-        oldMove = move;
-        
-
-        
+        oldMove = move; 
     }
 
     private void Update()

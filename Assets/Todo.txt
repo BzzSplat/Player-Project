@@ -1,4 +1,3 @@
-finish producer popup thingy (spawn it in, don't worry about reuseable stuff right now, just get one working)
 health and more weapons (the raycasts)
 fix miner spam (if you spam the miner it will quickly produce metal)
 

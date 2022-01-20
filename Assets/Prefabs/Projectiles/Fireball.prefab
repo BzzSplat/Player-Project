@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 922847289593288740}
   - component: {fileID: 922847289593288738}
   - component: {fileID: 5143617855914985532}
+  - component: {fileID: -3974041303901342365}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -4901,3 +4902,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
   explosion: {fileID: 177072438684870246, guid: 43af21b6f1bfcf045a43fd6d629a41ef, type: 3}
+--- !u!114 &-3974041303901342365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922847289593288747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0369a915be0e1784a9a0b20719030abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 15
