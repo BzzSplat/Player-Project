@@ -70,8 +70,10 @@
     <Compile Include="Assets\Scripts\Equips\Weapon.cs" />
     <Compile Include="Assets\Scripts\Equips\Equip.cs" />
     <Compile Include="Assets\Scripts\Player\RigidMov.cs" />
-    <Compile Include="Assets\Scripts\Player\CamControl.cs" />
     <Compile Include="Assets\Scripts\Equips\LaserWeapon.cs" />
+    <Compile Include="Assets\Scripts\Player\CamControl.cs" />
+    <Compile Include="Assets\Scripts\Popups\ConverterMenu.cs" />
+    <Compile Include="Assets\Scripts\Machines\Smelter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Todo.txt" />

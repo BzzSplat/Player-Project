@@ -1,5 +1,5 @@
-health and more weapons (the raycasts)
 fix miner spam (if you spam the miner it will quickly produce metal)
+more machines
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)
@@ -24,4 +24,5 @@ FTL in three types, multiplicitive (multiplies current speed), boost (speed boos
 no grid based building (bulding stuff like in gmod, maybe alignment tool)
 
 Dictionary/Whatev:
-Resource ID# in order (raw metal, metal T1, )
+Resource ID# in order:
+0-1: raw metal, metal T1,

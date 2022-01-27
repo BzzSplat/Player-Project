@@ -15,23 +15,11 @@ public class InteractableObject : MonoBehaviour
         GameObject popup = Instantiate(menu, playerCanvas.transform);
         Camera camera = playerCanvas.GetComponentInParent<Camera>();
         camera.GetComponent<CamControl>().freeMouse();
-        return popup;
-    }
 
-    public virtual GameObject popupMenuProducer(GameObject menu, GameObject playerCanvas)
-    {
-        GameObject popup = Instantiate(menu, playerCanvas.transform);
-        Camera camera = playerCanvas.GetComponentInParent<Camera>();
-        camera.GetComponent<CamControl>().freeMouse();
-        popup.GetComponent<ProducerMenu>().cam = camera.GetComponent<CamControl>();
-        return popup;
-    }
-
-    public virtual GameObject popupMenuConverter(GameObject menu, GameObject playerCanvas)
-    {
-        GameObject popup = Instantiate(menu, playerCanvas.transform);
-        Camera camera = playerCanvas.GetComponentInParent<Camera>();
-        camera.GetComponent<CamControl>().freeMouse();
+        if(popup.GetComponent<ProducerMenu>())
+            popup.GetComponent<ProducerMenu>().cam = camera.GetComponent<CamControl>();
+        if (popup.GetComponent<ConverterMenu>())
+            popup.GetComponent<ConverterMenu>().cam = camera.GetComponent<CamControl>();
         return popup;
     }
 }

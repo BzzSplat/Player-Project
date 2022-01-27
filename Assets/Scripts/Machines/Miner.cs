@@ -11,7 +11,7 @@ public class Miner : InteractableObject // instead make this a parent class for 
     Text counter;
     IEnumerator prodCoro;
     [SerializeField]
-    GameObject menu, popup, self;
+    GameObject menu, popup;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class Miner : InteractableObject // instead make this a parent class for 
 
     public override void Interaction()
     {
-        popup = popupMenuProducer(menu, Player.transform.GetChild(0).GetChild(2).gameObject);
+        popup = popupMenu(menu, Player.transform.GetChild(0).GetChild(2).gameObject);
         popup.GetComponent<ProducerMenu>().setUpMenu(gameObject.name, GetComponent<Miner>(), 0, Player.GetComponent<ResourceManager>());
     }
 
