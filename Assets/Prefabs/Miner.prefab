@@ -305,12 +305,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needsPlayer: 1
   Player: {fileID: 0}
-  rawMetals: 0
+  materials:
+  - 0
+  outputID: 0
   OnOff: 0
   counter: {fileID: 4303871145589167378}
   menu: {fileID: 8825562994941226089, guid: c314c1c602ee4ab4b98ded6937ccb283, type: 3}
   popup: {fileID: 0}
-  self: {fileID: 4303871146186697708}
 --- !u!1 &4303871146459251150
 GameObject:
   m_ObjectHideFlags: 0

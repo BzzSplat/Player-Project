@@ -23,18 +23,13 @@ public class ProducerMenu : MonoBehaviour //if producers ever generate multiple 
 
     void Update()
     {
-        resourceCounter.text = source.rawMetals.ToString();
+        resourceCounter.text = source.materials[outputID].ToString();
     }
 
     public void collectResources()
     {
-        switch (outputID)
-        {
-            case 0:
-                playerInv.rawMetal += source.rawMetals;
-                source.rawMetals = 0;
-                break;
-        }
+        playerInv.materials[outputID] += source.materials[outputID];
+        source.materials[outputID] = 0;
         source.updateDisplay();
     }
 

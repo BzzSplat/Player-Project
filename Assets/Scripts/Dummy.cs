@@ -20,11 +20,25 @@ public class Dummy : MonoBehaviour
     [SerializeField]
     Text oxyTxt, hpTxt;
 
+    [SerializeField]
+    bool MattMode = true;
+    [SerializeField]
+    AudioSource soundPlayer;
+    [SerializeField]
+    AudioClip[] mattSounds;
+
 
     private void Start()
     {
         suffocate = suffocateCoro();
         spawnLocation = transform.position;
+
+        if (MattMode)
+        {
+            StartCoroutine("mattTalk");
+            transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+        }
     }
 
     void Update()
@@ -81,11 +95,32 @@ public class Dummy : MonoBehaviour
     IEnumerator death()
     {
         GetComponent<Rigidbody>().freezeRotation = false;
+        if (MattMode)
+        {
+            soundPlayer.clip = mattSounds[0];
+            soundPlayer.Play();
+        }
+
         yield return new WaitForSeconds(10);
+
         transform.position = spawnLocation;
         health = 100;
         dead = false;
         GetComponent<Rigidbody>().freezeRotation = true;
         transform.rotation = Quaternion.identity;
+    }
+
+    IEnumerator mattTalk()
+    {
+        while (MattMode)
+        {
+            yield return new WaitForSeconds(Random.Range(4f, 8f));
+            if (!dead)
+            {
+            int x = Random.Range(1, 5);
+            soundPlayer.clip = mattSounds[x];
+            soundPlayer.Play();
+            }
+        }
     }
 }

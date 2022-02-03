@@ -1,5 +1,5 @@
+change inventory resource to a list instead of multipel variables, better for ID
 fix miner spam (if you spam the miner it will quickly produce metal)
-more machines
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)
@@ -16,7 +16,7 @@ BUILDING:
 ~ placment of machines on planet ground
 pipes to connect machines (rope tool from gmod)
 ~ materials (energy, metals, gasses, liquids, ect)
-machines that do stuff with items (craft items, refine/smelt ores)
+~ machines that do stuff with items (craft items, refine/smelt ores)
 
 SHIP BUILDING:
 machines such as grav generators, thrusters, chairs, ship weapons, FTL drive, ect

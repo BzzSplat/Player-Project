@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class Miner : InteractableObject // instead make this a parent class for all producing machines
 {
-    public float rawMetals = 0;
+    public List<float> materials = new List<float>();
+    public int outputID;
+
     public bool OnOff = false;
+
     [SerializeField]
     Text counter;
-    IEnumerator prodCoro;
     [SerializeField]
     GameObject menu, popup;
 
+    IEnumerator prodCoro;
+
     private void Start()
     {
-        counter.text = "Stopped\n" + rawMetals.ToString(); ;
+        counter.text = "Stopped\n" + materials[outputID].ToString(); ;
         prodCoro = Produce();
     }
 
@@ -25,8 +29,8 @@ public class Miner : InteractableObject // instead make this a parent class for 
         {
             yield return new WaitForSeconds(5);
             if(OnOff)
-                rawMetals++;
-            counter.text = "Mining\n" + rawMetals.ToString();
+                materials[0]++;
+            counter.text = "Mining\n" + materials[outputID].ToString();
         }
         
     }
@@ -42,32 +46,19 @@ public class Miner : InteractableObject // instead make this a parent class for 
         if (OnOff) {
             OnOff = false;
             StopCoroutine(prodCoro);
-            counter.text = "Stopped\n" + rawMetals.ToString();
+            counter.text = "Stopped\n" + materials[outputID].ToString();
         } else {
             OnOff = true;
             StartCoroutine(prodCoro);
-            counter.text = "Mining\n" + rawMetals.ToString();
+            counter.text = "Mining\n" + materials[outputID].ToString();
         }
     }
 
     public void updateDisplay()
     {
         if (OnOff)
-            counter.text = "Mining\n" + rawMetals.ToString();
+            counter.text = "Mining\n" + materials[outputID].ToString();
         else
-            counter.text = "Stopped\n" + rawMetals.ToString();
+            counter.text = "Stopped\n" + materials[outputID].ToString();
     }
-
-    /*private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<ResourceManager>().rawMetal += rawMetals;
-            rawMetals = 0;
-            if(mining)
-                counter.text = "Mining\n" + rawMetals.ToString();
-            else
-                counter.text = "Stopped\n" + rawMetals.ToString();
-        }
-    }*/
 }

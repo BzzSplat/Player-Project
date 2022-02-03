@@ -5,8 +5,13 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
     //Make this one of those virtual classes and have the methods set to fire1 and fire 2, maybe others too.
     //Then just comment the current projectile/raycast shoot code below for easy access when needed.
-    //THis should allow fore more creativity with weapons and such yadda yadda.
+    //This should allow fore more creativity with weapons and such yadda yadda.
 {
+    [SerializeField]
+    AudioSource audioPlayer;
+    [SerializeField]
+    AudioClip shootSound1, shootSound2;
+
     public GameObject Projectile1;
     public float Projectile1ThrowForce;
 
@@ -43,6 +48,9 @@ public class Weapon : MonoBehaviour
                 ShootProjectile(Projectile1, Projectile1ThrowForce);
             if(fire1_Raycast)
                 Castaray(ray1Range, ray1Damage, ray1HitEffect);
+
+            audioPlayer.clip = shootSound1;
+            audioPlayer.Play();
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -50,6 +58,9 @@ public class Weapon : MonoBehaviour
                 ShootProjectile(Projectile2, Projectile2ThrowForce);
             if (fire2_Raycast)
                 Castaray(ray2Range, ray2Damage, ray2HitEffect);
+
+            audioPlayer.clip = shootSound2;
+            audioPlayer.Play();
         }
 
         //Thanks to Plai on YouTube

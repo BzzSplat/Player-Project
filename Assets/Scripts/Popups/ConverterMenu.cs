@@ -24,23 +24,14 @@ public class ConverterMenu : MonoBehaviour
 
     void Update()
     {
-        inputCounter.text = source.rawMetals.ToString();
-        outputCounter.text = source.metalsT1.ToString();
+        inputCounter.text = source.materials[inputID].ToString();
+        outputCounter.text = source.materials[outputID].ToString();
     }
 
     public void collectResources()
     {
-        switch (outputID)
-        {
-            case 0:
-                playerInv.rawMetal += source.rawMetals;
-                source.rawMetals = 0;
-                break;
-            case 1:
-                playerInv.metalTier1 += source.metalsT1;
-                source.metalsT1 = 0;
-                break;
-        }
+        playerInv.materials[outputID] += source.materials[outputID];
+        source.materials[outputID] = 0;
         source.updateDisplay();
     }
 
@@ -62,10 +53,10 @@ public class ConverterMenu : MonoBehaviour
 
     public void deposit(int amount)
     {
-        if (playerInv.rawMetal < amount)
+        if (playerInv.materials[inputID] < amount)
             return;
 
-        source.rawMetals += amount;
-        playerInv.rawMetal -= amount;
+        source.materials[inputID] += amount;
+        playerInv.materials[inputID] -= amount;
     }
 }

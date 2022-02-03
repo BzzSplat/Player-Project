@@ -28,7 +28,7 @@ public class GUI_Menu : MonoBehaviour
 
     public void spawnitem(int index)
     {
-        if (materials.rawMetal < spawnCosts[index])
+        if (materials.materials[1] < spawnCosts[index])
             return;
 
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -41,7 +41,7 @@ public class GUI_Menu : MonoBehaviour
             endPoint = ray.GetPoint(1000);
 
         Instantiate(spawnables[index], endPoint, Quaternion.identity);
-        materials.rawMetal -= spawnCosts[index];//spawn cost
+        materials.materials[1] -= spawnCosts[index];//spawn cost
     }
 
     void Update()

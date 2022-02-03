@@ -8,18 +8,19 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     GameObject menu;
 
-    public float rawMetal, metalTier1;
+    public List<float> materials = new List<float>();
     [SerializeField]
-    GameObject RMC, MT1C;
+    List<Text> materialDisplay = new List<Text>();
 
     private void Start()
     {
-        rawMetal = 11;
+        materials[0] = 10;
+        materials[1] = 10;
     }
 
     void Update()
     {
-        RMC.GetComponent<Text>().text = rawMetal.ToString();
-        MT1C.GetComponent<Text>().text = metalTier1.ToString();
+        materialDisplay[0].text = materials[0].ToString();
+        materialDisplay[1].text = materials[1].ToString();
     }
 }

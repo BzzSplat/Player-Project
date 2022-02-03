@@ -5,19 +5,24 @@ using UnityEngine.UI;
 
 public class Smelter : InteractableObject
 {
-    public float rawMetals = 0, metalsT1 = 0;
+    public List<float> materials = new List<float>();
+    public int inputID, outputID;
+
     public bool OnOff = false;
+
     [SerializeField]
     Text counter1, counter2;
-    IEnumerator convCoro;
     [SerializeField]
     GameObject menu, popup;
 
+    IEnumerator convCoro;
+
     private void Start()
     {
-        counter1.text = rawMetals.ToString(); ;
-        counter2.text = metalsT1.ToString();
+        counter1.text = materials[inputID].ToString(); ;
+        counter2.text = materials[outputID].ToString();
         convCoro = Convert();
+        hasInports = true;
     }
 
     IEnumerator Convert()
@@ -25,13 +30,20 @@ public class Smelter : InteractableObject
         while (OnOff)
         {
             yield return new WaitForSeconds(5);
-            if (OnOff && rawMetals > 0)
+
+            if(Inports && Inports.materials[inputID] > 0)
             {
-                rawMetals--;
-                metalsT1++;
+                materials[inputID] += Inports.materials[inputID];
+                Inports.materials[inputID] = 0;
             }
-            counter1.text = rawMetals.ToString();
-            counter2.text = metalsT1.ToString();
+
+            if (OnOff && materials[inputID] > 0)
+            {
+                materials[0]--;
+                materials[1]++;
+            }
+            counter1.text = materials[inputID].ToString();
+            counter2.text = materials[outputID].ToString();
         }
 
     }
@@ -48,15 +60,15 @@ public class Smelter : InteractableObject
         {
             OnOff = false;
             StopCoroutine(convCoro);
-            counter1.text = rawMetals.ToString();
-            counter2.text = metalsT1.ToString();
+            counter1.text = materials[inputID].ToString();
+            counter2.text = materials[outputID].ToString();
         }
         else
         {
             OnOff = true;
             StartCoroutine(convCoro);
-            counter1.text = rawMetals.ToString();
-            counter2.text = metalsT1.ToString();
+            counter1.text = materials[inputID].ToString();
+            counter2.text = materials[outputID].ToString();
         }
     }
 
@@ -64,14 +76,32 @@ public class Smelter : InteractableObject
     {
         if (OnOff)
         {
-            counter1.text = rawMetals.ToString();
-            counter2.text = metalsT1.ToString();
+            counter1.text = materials[inputID].ToString();
+            counter2.text = materials[outputID].ToString();
         }
         else
         {
-            counter1.text = rawMetals.ToString();
-            counter2.text = metalsT1.ToString();
+            counter1.text = materials[inputID].ToString();
+            counter2.text = materials[outputID].ToString();
         }
+    }
+
+    private void Update()
+    {
+        if (Inports && GetComponent<LineRenderer>())
+        {
+            GetComponent<LineRenderer>().SetPosition(1, Inports.transform.position);
+            GetComponent<LineRenderer>().SetPosition(0, transform.position);
+
+            if (Vector3.Distance(Inports.transform.position, transform.position) > 5)
+            {
+                Destroy(GetComponent<LineRenderer>());
+                Inports = null;
+            }
+        }
+
+
+            
     }
 
 }

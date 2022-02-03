@@ -213,8 +213,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needsPlayer: 1
   Player: {fileID: 0}
-  rawMetals: 0
-  metalsT1: 0
+  materials:
+  - 0
+  - 0
+  inputID: 0
+  outputID: 1
   OnOff: 0
   counter1: {fileID: 7295506823239106219}
   counter2: {fileID: 2985735454840305611}
