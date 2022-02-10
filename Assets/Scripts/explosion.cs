@@ -17,6 +17,12 @@ public class explosion : MonoBehaviour
 
             if (rb != null)
                 rb.AddExplosionForce(power, explosionPos, radius);
+
+            if (hit.GetComponent<Health>())
+                hit.GetComponent<Health>().health -= (int) ((power/100) / Vector3.Distance(hit.transform.position, transform.position));
+
+            if (hit.GetComponent<Dummy>())
+                hit.GetComponent<Dummy>().health -= (int) ((power / 100) / Vector3.Distance(hit.transform.position, transform.position));
         }
         Destroy(this.gameObject, 1);
     }

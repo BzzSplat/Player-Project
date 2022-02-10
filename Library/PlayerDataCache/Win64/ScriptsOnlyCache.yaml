@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CamControl
+    - ConverterMenu
     - Dummy
     - Equip
     - Explosive
@@ -10,11 +11,14 @@ ScriptsOnlyBuild:
     - Health
     - InAtmosphere
     - LaserWeapon
+    - Linker
     - Miner
     - Moveplanet
+    - PhysicsGunInteractionBehavior
     - ProducerMenu
     - ResourceManager
     - RigidMov
+    - Smelter
     - TimedDelete
     - Weapon
     - Welder
@@ -59,6 +63,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -70,51 +78,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1444}
     - Class: 114
-      Script: {instanceID: 1536}
+      Script: {instanceID: 1538}
     - Class: 114
-      Script: {instanceID: 1630}
+      Script: {instanceID: 1632}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 2160}
+      Script: {instanceID: 1852}
     - Class: 114
-      Script: {instanceID: 2174}
+      Script: {instanceID: 2164}
     - Class: 114
-      Script: {instanceID: 2232}
+      Script: {instanceID: 2178}
     - Class: 114
-      Script: {instanceID: 2292}
+      Script: {instanceID: 2236}
     - Class: 114
-      Script: {instanceID: 2404}
+      Script: {instanceID: 2296}
     - Class: 114
-      Script: {instanceID: 2566}
+      Script: {instanceID: 2346}
     - Class: 114
-      Script: {instanceID: 2750}
+      Script: {instanceID: 2410}
     - Class: 114
-      Script: {instanceID: 2764}
+      Script: {instanceID: 2572}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2756}
     - Class: 114
-      Script: {instanceID: 3036}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 3246}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 3264}
+      Script: {instanceID: 3042}
     - Class: 114
-      Script: {instanceID: 3476}
+      Script: {instanceID: 3252}
     - Class: 114
-      Script: {instanceID: 3658}
+      Script: {instanceID: 3270}
     - Class: 114
-      Script: {instanceID: 3704}
+      Script: {instanceID: 3324}
     - Class: 114
-      Script: {instanceID: 3916}
+      Script: {instanceID: 3484}
     - Class: 114
-      Script: {instanceID: 3960}
+      Script: {instanceID: 3666}
     - Class: 114
-      Script: {instanceID: 4114}
+      Script: {instanceID: 3712}
     - Class: 114
-      Script: {instanceID: 4298}
+      Script: {instanceID: 3924}
     - Class: 114
-      Script: {instanceID: 4328}
+      Script: {instanceID: 3968}
+    - Class: 114
+      Script: {instanceID: 4122}
+    - Class: 114
+      Script: {instanceID: 4284}
+    - Class: 114
+      Script: {instanceID: 4308}
+    - Class: 114
+      Script: {instanceID: 4338}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -234,6 +250,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: bf053904b3ca77b3ffdc7351ce9f7a4e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Linker
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -258,7 +280,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 9a59b54d00bbc4ea07bb9217c81bcf80
+      Hash: 6c79b11b97f2802d7684e3ee5ae3e9c9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ResourceManager
@@ -280,6 +302,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 7490b6e1dc72b37c244e6972a1b6cabc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Smelter
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -486,7 +514,7 @@ ScriptsOnlyBuild:
     className: ProducerMenu
   - hash:
       serializedVersion: 2
-      Hash: f7abf63efbdb0f7a26d4324d53769238
+      Hash: 4e29c29e2448cca1e297e9a160af087e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Dummy
@@ -496,6 +524,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: ba12b96ee2bce4a253c3bf50cfaa77a7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PhysicsGunInteractionBehavior
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -546,13 +580,13 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 243ff884e741297802f11f89e53078c6
+      Hash: 1d96b504698abe5726493e4000243758
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InteractableObject
   - hash:
       serializedVersion: 2
-      Hash: 777e0a60cc1633852fcd41bb6f2b9460
+      Hash: f73a244cb45e111419046cd6779c443b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Miner
@@ -606,7 +640,7 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 8553a8b36209e9cf336a1cdf95880305
+      Hash: 3dec4e5f34b03a1d45162055e35d493d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Weapon
@@ -640,6 +674,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RigidMov
+  - hash:
+      serializedVersion: 2
+      Hash: 3a1c5302baa72618741a7a622be2aa5c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ConverterMenu
   - hash:
       serializedVersion: 2
       Hash: 31cb3f0088339c76e417d2dafc59a82e
@@ -679,4 +719,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Users/creep/unity builds/Player project.exe
+  playerPath: D:/Users/creep/Player Project/Player project.exe

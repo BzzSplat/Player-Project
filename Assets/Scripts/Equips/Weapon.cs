@@ -49,8 +49,8 @@ public class Weapon : MonoBehaviour
             if(fire1_Raycast)
                 Castaray(ray1Range, ray1Damage, ray1HitEffect);
 
-            audioPlayer.clip = shootSound1;
-            audioPlayer.Play();
+            if(shootSound1)
+                audioPlayer.PlayOneShot(shootSound1);
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -59,8 +59,8 @@ public class Weapon : MonoBehaviour
             if (fire2_Raycast)
                 Castaray(ray2Range, ray2Damage, ray2HitEffect);
 
-            audioPlayer.clip = shootSound2;
-            audioPlayer.Play();
+            if (shootSound2)
+                audioPlayer.PlayOneShot(shootSound2);
         }
 
         //Thanks to Plai on YouTube

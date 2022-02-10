@@ -16,7 +16,7 @@ public class CamControl : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 100, 300, 300), "CONTROLS:\nLMB - Primary Use\nRMB - Secondary Use\n1 - Hand/Magic\n2 - Welder\n3 - Laser Gun\nX - Drop\nQ - Spawn Menu");
+        GUI.Label(new Rect(10, 100, 300, 300), "CONTROLS:\nLMB - Primary Use\nRMB - Secondary Use\n1 - Hand/Magic\n2 - Welder\n3 - Laser Gun\n4 - Linker (Smelter then Miner)\nX - Drop\nQ - Spawn Menu\nE - Interact");
     }
 
     void Update()

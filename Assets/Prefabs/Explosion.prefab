@@ -4820,7 +4820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  power: 40000
+  power: 10000
 --- !u!82 &2848503839750891157
 AudioSource:
   m_ObjectHideFlags: 0
