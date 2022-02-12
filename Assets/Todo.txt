@@ -1,5 +1,12 @@
+energy for machines
+fix pipe line renderer
+make new machine subclass for interactableObject to make it cleaner
+
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
+toolbox radial
+better linking (simply override the inport variable, and in the linker do (if var secondLink.type == firstLink.inport.type))
+refinery and tier 2 metal
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)
@@ -13,8 +20,6 @@ toolbox item, press T to open radial menu to select different tools like welder 
 inventory system (???)
 
 BUILDING:
-~ placment of machines on planet ground
-pipes to connect machines (rope tool from gmod)
 ~ materials (energy, metals, gasses, liquids, ect)
 ~ machines that do stuff with items (craft items, refine/smelt ores)
 

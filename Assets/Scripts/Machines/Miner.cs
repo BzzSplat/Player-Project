@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Miner : InteractableObject // instead make this a parent class for all producing machines
 {
-    public List<float> materials = new List<float>();
+    public float[] materials;
     public int outputID;
 
     public bool OnOff = false;
@@ -60,5 +60,10 @@ public class Miner : InteractableObject // instead make this a parent class for 
             counter.text = "Mining\n" + materials[outputID].ToString();
         else
             counter.text = "Stopped\n" + materials[outputID].ToString();
+    }
+
+    public override int link()
+    {
+        return outputID;
     }
 }

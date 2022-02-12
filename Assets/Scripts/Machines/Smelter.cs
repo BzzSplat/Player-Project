@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Smelter : InteractableObject
 {
-    public List<float> materials = new List<float>();
+    public float[] materials;
     public int inputID, outputID;
+    new public Miner Inports; //change for different machines
 
     public bool OnOff = false;
 
@@ -22,7 +23,6 @@ public class Smelter : InteractableObject
         counter1.text = materials[inputID].ToString(); ;
         counter2.text = materials[outputID].ToString();
         convCoro = Convert();
-        hasInports = true;
     }
 
     IEnumerator Convert()
@@ -98,10 +98,12 @@ public class Smelter : InteractableObject
                 Destroy(GetComponent<LineRenderer>());
                 Inports = null;
             }
-        }
+        }  
+    }
 
-
-            
+    public override int link()
+    {
+        return inputID;
     }
 
 }

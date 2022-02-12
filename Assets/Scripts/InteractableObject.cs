@@ -8,8 +8,7 @@ public class InteractableObject : MonoBehaviour
     public bool needsPlayer = true;
     public GameObject Player;
 
-    public bool hasInports = false;
-    public Miner Inports;
+    public InteractableObject Inports;
 
     public virtual void Interaction() {} //do anyhting you like in it
 
@@ -24,5 +23,10 @@ public class InteractableObject : MonoBehaviour
         if (popup.GetComponent<ConverterMenu>())
             popup.GetComponent<ConverterMenu>().cam = camera.GetComponent<CamControl>();
         return popup;
+    }
+
+    public virtual int link()
+    {
+        return 0;
     }
 }

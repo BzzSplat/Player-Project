@@ -268,7 +268,8 @@ public class PhysicsGunInteractionBehavior : MonoBehaviour
             // We are already holding an object, listen for rotation input
             if (Input.GetKey(Rotate))
             {
-                GetComponent<Weapon>().camera.GetComponent<CamControl>().trapMouse();
+                GetComponent<Weapon>().camera.GetComponent<CamControl>().freeMouse();
+                Cursor.visible = false;
 
                 var rotateZ         = Input.GetKey(RotateZ);
 
@@ -321,10 +322,8 @@ public class PhysicsGunInteractionBehavior : MonoBehaviour
             else
             {
                 _snapRotation = false;
+                GetComponent<Weapon>().camera.GetComponent<CamControl>().trapMouse();
             }
-
-            if(Input.GetKeyUp(Rotate))
-                GetComponent<Weapon>().camera.GetComponent<CamControl>().freeMouse();
 
             var direction = Input.GetAxis("Mouse ScrollWheel");
         

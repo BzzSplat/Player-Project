@@ -207,7 +207,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -973,7 +973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1880730252719708204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1852,9 +1852,9 @@ MonoBehaviour:
   Items:
   - {fileID: 5874930548466731690, guid: a68f87114a6fff7498f34071380790a9, type: 3}
   - {fileID: 951568489786011413, guid: da1896b0aeafc7a47b02aa77d8d6cdc1, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8243871498471180501, guid: 13ad08db2d77f5140ade4564db32ce4e, type: 3}
+  - {fileID: 6946300711653411322, guid: d65b438b9d93d804c8cae376539ef82a, type: 3}
+  - {fileID: 4893728934446294634, guid: 8e60b4aebf6dfa74e992cbc18dbc69d6, type: 3}
   - {fileID: 0}
   spawnPos: {fileID: 574567296054510754}
 --- !u!1 &6755615889048358572
@@ -1957,10 +1957,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1880730252719708203}
-  rawMetal: 0
-  metalTier1: 0
-  RMC: {fileID: 1880730251980532068}
-  MT1C: {fileID: 1880730252873072394}
+  materials:
+  - 0
+  - 0
+  materialDisplay:
+  - {fileID: 1880730251980532070}
+  - {fileID: 1880730252873072396}
 --- !u!114 &6935447073880941694
 MonoBehaviour:
   m_ObjectHideFlags: 0

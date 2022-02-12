@@ -6,8 +6,7 @@ public class Linker : MonoBehaviour
 {
     bool SecondClick = false;
 
-    Smelter Exports;
-    Miner Inports;
+    InteractableObject inTo, outFrom;
 
     [SerializeField]
     Material pipeMat;
@@ -30,14 +29,15 @@ public class Linker : MonoBehaviour
 
             if (hit.transform)
             {
-                if (!SecondClick && hit.transform.gameObject.GetComponent<Smelter>())
+                if (!SecondClick && hit.transform.gameObject.GetComponent<InteractableObject>())
                 {
-                    Exports = hit.transform.gameObject.GetComponent<Smelter>();
+                    inTo = hit.transform.gameObject.GetComponent<InteractableObject>();
                     SecondClick = true;
                 }
-                else if(SecondClick && hit.transform.gameObject.GetComponent<Miner>())
+
+                else if(SecondClick && hit.transform.gameObject.GetComponent<InteractableObject>())
                 {
-                    Inports = hit.transform.gameObject.GetComponent<Miner>();
+                    outFrom = hit.transform.gameObject.GetComponent<InteractableObject>();
                     SecondClick = false;
                     Link();
                     
@@ -48,11 +48,16 @@ public class Linker : MonoBehaviour
 
     void Link()
     {
-        Exports.Inports = Inports;
-        LineRenderer pipe = Exports.gameObject.AddComponent<LineRenderer>();
-        pipe.startWidth = 0.5f; pipe.endWidth = 0.5f;
-        pipe.material = pipeMat;
-        Exports = null;
-        Inports = null;
+        if(inTo.link() == outFrom.link())
+        {
+            inTo.Inports = outFrom; //if input matches output connect
+
+            LineRenderer pipe = inTo.gameObject.AddComponent<LineRenderer>();
+            pipe.startWidth = 0.5f; pipe.endWidth = 0.5f;
+            pipe.material = pipeMat;
+        }
+
+        inTo = null;
+        outFrom = null;
     }
 }

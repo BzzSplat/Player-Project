@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Popups\ConverterMenu.cs" />
     <Compile Include="Assets\Scripts\Equips\LaserWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\CamControl.cs" />
+    <Compile Include="Assets\Scripts\Machines\BoomBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Todo.txt" />
