@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Linker : MonoBehaviour
 {
-    bool SecondClick = false;
+    bool SecondClick = false, doingElec = false;
 
-    InteractableObject inTo, outFrom;
+    Machine inTo, outFrom;
 
     [SerializeField]
     Material pipeMat;
@@ -29,18 +29,24 @@ public class Linker : MonoBehaviour
 
             if (hit.transform)
             {
-                if (!SecondClick && hit.transform.gameObject.GetComponent<InteractableObject>())
+                if (!SecondClick && hit.transform.gameObject.GetComponent<Machine>()) //first click
                 {
-                    inTo = hit.transform.gameObject.GetComponent<InteractableObject>();
+                    inTo = hit.transform.gameObject.GetComponent<Machine>();
                     SecondClick = true;
+
+                    if (hit.transform.gameObject.GetComponent<Generator>())
+                        doingElec = true;
                 }
 
-                else if(SecondClick && hit.transform.gameObject.GetComponent<InteractableObject>())
+                else if(SecondClick && hit.transform.gameObject.GetComponent<Machine>()) //second click
                 {
-                    outFrom = hit.transform.gameObject.GetComponent<InteractableObject>();
+                    outFrom = hit.transform.gameObject.GetComponent<Machine>();
                     SecondClick = false;
+
+                    if (hit.transform.gameObject.GetComponent<Generator>())
+                        doingElec = true;
+
                     Link();
-                    
                 }
             }
         }
@@ -48,16 +54,36 @@ public class Linker : MonoBehaviour
 
     void Link()
     {
-        if(inTo.link() == outFrom.link())
+        if (!doingElec)
         {
-            inTo.Inports = outFrom; //if input matches output connect
+            if(inTo.link() == outFrom.link())
+            {
+               inTo.Inports = outFrom; //if input matches output connect
+
+                LineRenderer pipe = inTo.gameObject.AddComponent<LineRenderer>();
+                pipe.startWidth = 0.5f; pipe.endWidth = 0.5f;
+                pipe.material = pipeMat;
+            }
+        }
+        else
+        {
+            if (inTo.GetType() == typeof(Generator))
+            {
+                inTo.GetComponent<Generator>().connections.Add(outFrom);
+            }
+            if (outFrom.GetType() == typeof(Generator))
+            {
+                outFrom.GetComponent<Generator>().connections.Add(inTo);
+            }
 
             LineRenderer pipe = inTo.gameObject.AddComponent<LineRenderer>();
-            pipe.startWidth = 0.5f; pipe.endWidth = 0.5f;
+            pipe.startWidth = 0.2f; pipe.endWidth = 0.2f;
             pipe.material = pipeMat;
         }
 
+
         inTo = null;
         outFrom = null;
+        doingElec = false;
     }
 }

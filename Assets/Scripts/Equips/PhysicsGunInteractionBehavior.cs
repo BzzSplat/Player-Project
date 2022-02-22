@@ -241,7 +241,8 @@ public class PhysicsGunInteractionBehavior : MonoBehaviour
                     OnObjectGrabbed.Invoke(_grabbedRigidbody.gameObject);
 
                     activeGrabEffect = Instantiate(grabEffect, _grabbedTransform);
-                    activeGrabEffect.GetComponent<ParticleSystem>().startSize = Math.Max(_grabbedTransform.localScale.x, Math.Max(_grabbedTransform.localScale.y, _grabbedTransform.localScale.z));
+                    var effectMain = activeGrabEffect.GetComponent<ParticleSystem>().main;
+                    effectMain.startSize = Math.Max(_grabbedTransform.localScale.x, Math.Max(_grabbedTransform.localScale.y, _grabbedTransform.localScale.z));
                     var pSS = activeGrabEffect.GetComponent<ParticleSystem>().shape;
                     pSS.scale = _grabbedTransform.localScale;
 

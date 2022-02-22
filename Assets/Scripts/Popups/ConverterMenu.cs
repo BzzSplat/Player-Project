@@ -8,18 +8,28 @@ public class ConverterMenu : MonoBehaviour
     public Text inputCounter, outputCounter, objectName;
     public ResourceManager playerInv;
     public int inputID, outputID;
-    public Smelter source;
+    public Machine source;
     public CamControl cam;
     [SerializeField]
     GameObject powerSwitch;
+    [SerializeField]
+    Sprite[] icons;
 
-    public void setUpMenu(string name, Smelter converter, int inID, int outID , ResourceManager inv)
+    public void setUpMenu(string name, Machine converter, int inID, int outID , ResourceManager inv)
     {
         objectName.text = name;
         source = converter;
         inputID = inID;
         outputID = outID;
         playerInv = inv;
+
+        inputCounter.GetComponentInParent<Image>().sprite = icons[inID];
+        outputCounter.GetComponentInParent<Image>().sprite = icons[outID];
+
+        if (source.OnOff)
+            powerSwitch.GetComponent<Image>().color = Color.green;
+        else
+            powerSwitch.GetComponent<Image>().color = Color.red;
     }
 
     void Update()

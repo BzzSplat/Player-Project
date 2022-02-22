@@ -8,17 +8,26 @@ public class ProducerMenu : MonoBehaviour //if producers ever generate multiple 
     public Text resourceCounter, objectName;
     public ResourceManager playerInv;
     public int outputID;
-    public Miner source;
+    public Machine source;
     public CamControl cam;
     [SerializeField]
     GameObject powerSwitch;
+    [SerializeField]
+    Sprite[] icons;
 
-    public void setUpMenu(string name, Miner producer, int ID, ResourceManager inv)
+    public void setUpMenu(string name, Machine producer, int ID, ResourceManager inv)
     {
         objectName.text = name;
         source = producer;
         outputID = ID;
         playerInv = inv;
+
+        resourceCounter.GetComponentInParent<Image>().sprite = icons[ID];
+
+        if (source.OnOff)
+            powerSwitch.GetComponent<Image>().color = Color.green;
+        else
+            powerSwitch.GetComponent<Image>().color = Color.red;
     }
 
     void Update()

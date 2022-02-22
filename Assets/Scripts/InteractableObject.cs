@@ -8,8 +8,6 @@ public class InteractableObject : MonoBehaviour
     public bool needsPlayer = true;
     public GameObject Player;
 
-    public InteractableObject Inports;
-
     public virtual void Interaction() {} //do anyhting you like in it
 
     public virtual GameObject popupMenu(GameObject menu, GameObject playerCanvas) //open a menu of your choice on the player's screen

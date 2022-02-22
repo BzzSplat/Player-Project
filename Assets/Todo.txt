@@ -1,6 +1,5 @@
-energy for machines
-fix pipe line renderer
-make new machine subclass for interactableObject to make it cleaner
+object storage for multiple line renderers in objects
+finish generator and electrcity checks on cororutines
 
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
@@ -30,4 +29,6 @@ no grid based building (bulding stuff like in gmod, maybe alignment tool)
 
 Dictionary/Whatev:
 Resource ID# in order:
-0-1: raw metal, metal T1,
+0 - raw metal
+1 - metal T1
+2 - electricity
