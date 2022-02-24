@@ -25,7 +25,6 @@ public class GUI_Menu : MonoBehaviour
     List<int> spawnCosts = new List<int>();
 
 
-
     public void spawnitem(int index)
     {
         if (materials.materials[1] < spawnCosts[index])

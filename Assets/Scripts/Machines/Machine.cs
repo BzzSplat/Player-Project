@@ -7,7 +7,10 @@ public class Machine : InteractableObject
 {
     public float electricityCost, maxElectricity;
 
-    public List<float> materials = new List<float>();
+    public List<Machine> connections = new List<Machine>(); //use this instead of inports
+    public List<LineRenderer> lines = new List<LineRenderer>();
+
+    public float[] materials = new float[3];
     public int inputID, outputID;
     public Machine Inports; //change for different machines
 
@@ -22,9 +25,16 @@ public class Machine : InteractableObject
         while (OnOff)
         {
             yield return new WaitForSeconds(5);
-            if (OnOff)
+            if (OnOff && materials[2] >= electricityCost)
+            {
                 materials[outputID]++;
+                materials[2] -= electricityCost;
+            }
+
             counter1.text = materials[outputID].ToString();
+
+            if (materials[2] < electricityCost)
+                toggleProducing();
         }
     }
 
@@ -34,33 +44,38 @@ public class Machine : InteractableObject
         {
             yield return new WaitForSeconds(5);
 
-            if (Inports && Inports.materials[inputID] > 0)
+            if (Inports && Inports.materials[inputID] > 0 && materials[2] >= electricityCost)
             {
                 materials[inputID] += Inports.materials[inputID];
                 Inports.materials[inputID] = 0;
             }
 
-            if (OnOff && materials[inputID] > 0)
+            if (OnOff && materials[inputID] > 0 && materials[2] >= electricityCost)
             {
                 materials[0]--;
                 materials[1]++;
             }
+
             counter1.text = materials[inputID].ToString();
             counter2.text = materials[outputID].ToString();
+
+            if (materials[2] < electricityCost)
+                toggleProducing();
         }
     }
 
     public virtual void Update()
     {
-        if (Inports && GetComponent<LineRenderer>())
+        for (int i = 0; i < connections.Count; i++)
         {
-            GetComponent<LineRenderer>().SetPosition(1, Inports.transform.position);
-            GetComponent<LineRenderer>().SetPosition(0, transform.position);
+            lines[i].SetPosition(1, connections[i].transform.position);
+            lines[i].SetPosition(0, transform.position);
 
-            if (Vector3.Distance(Inports.transform.position, transform.position) > 5)
+            if (Vector3.Distance(connections[i].transform.position, transform.position) > 5)
             {
-                Destroy(GetComponent<LineRenderer>());
-                Inports = null;
+                Destroy(lines[i].gameObject);
+                lines.RemoveAt(i);
+                connections.RemoveAt(i);
             }
         }
     }

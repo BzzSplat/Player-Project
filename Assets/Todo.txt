@@ -1,11 +1,11 @@
-object storage for multiple line renderers in objects
 finish generator and electrcity checks on cororutines
+fix planet atmosphere parent check for colliders
 
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial
-better linking (simply override the inport variable, and in the linker do (if var secondLink.type == firstLink.inport.type))
 refinery and tier 2 metal
+instead of machines having lists for materials have two arrays, one for a material ID and the other for that material amount
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)

@@ -59,31 +59,42 @@ public class Linker : MonoBehaviour
             if(inTo.link() == outFrom.link())
             {
                inTo.Inports = outFrom; //if input matches output connect
-
-                LineRenderer pipe = inTo.gameObject.AddComponent<LineRenderer>();
-                pipe.startWidth = 0.5f; pipe.endWidth = 0.5f;
-                pipe.material = pipeMat;
+                makeLine(inTo.gameObject, Color.white, 0.5f);
+                inTo.connections.Add(outFrom);
             }
         }
         else
         {
+
             if (inTo.GetType() == typeof(Generator))
             {
-                inTo.GetComponent<Generator>().connections.Add(outFrom);
+                makeLine(inTo.gameObject, Color.black, 0.2f);
+                inTo.connections.Add(outFrom);
             }
             if (outFrom.GetType() == typeof(Generator))
             {
-                outFrom.GetComponent<Generator>().connections.Add(inTo);
+                makeLine(outFrom.gameObject, Color.black, 0.2f);
+                outFrom.connections.Add(outFrom);
             }
-
-            LineRenderer pipe = inTo.gameObject.AddComponent<LineRenderer>();
-            pipe.startWidth = 0.2f; pipe.endWidth = 0.2f;
-            pipe.material = pipeMat;
         }
 
 
         inTo = null;
         outFrom = null;
         doingElec = false;
+    }
+
+    void makeLine(GameObject lineHolder, Color color, float size)
+    {
+        GameObject lineObject = new GameObject();
+        lineObject.transform.parent = lineHolder.transform;
+        lineObject.transform.localPosition = Vector3.zero;
+
+        LineRenderer pipe = lineObject.AddComponent<LineRenderer>();
+        pipe.startWidth = size; pipe.endWidth = size;
+        pipe.material = pipeMat;
+        pipe.material.color = color;
+
+        lineHolder.GetComponent<Machine>().lines.Add(pipe);
     }
 }

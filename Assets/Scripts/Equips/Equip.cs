@@ -47,7 +47,6 @@ public class Equip : MonoBehaviour
 
     void SwitchEquip(GameObject newItem)
     {
-        Debug.Log("Switching to " + newItem);
         if (CurrentItem && transform.GetChild(1).GetChild(0))
             StartCoroutine(delOldItem(transform.GetChild(1).GetChild(0).gameObject));
 

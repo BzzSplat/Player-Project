@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Producer : Machine
 {    private void Start()
     {
-        counter1.text = "Stopped\n" + materials[outputID].ToString(); ;
+        counter1.text = materials[outputID].ToString(); ;
         workCoro = Produce();
     }
 
