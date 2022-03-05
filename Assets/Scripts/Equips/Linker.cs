@@ -70,15 +70,38 @@ public class Linker : MonoBehaviour
     {
         if (silo)
         {
-            silo.connections.Add(machine);
-            
+            if (machine)
+            {
+                makeLine(machine.gameObject, 0.3f);
+                silo.connections.Add(machine);
+            }
+            else if (relay1)
+            {
+                makeLine(relay1.gameObject, 0.3f);
+                relay1.silo = silo;
+            }
+        }
+        else if (relay1)
+        {
+            if (machine)
+            {
+                makeLine(machine.gameObject, 0.3f);
+                relay1.silo.connections.Add(machine);
+            }
+            else if (relay2)
+            {
+                makeLine(relay2.gameObject, 0.3f);
+                if (relay1.silo)
+                    relay2.silo = relay1.silo;
+                else
+                    relay1.silo = relay2.silo;
+            }
         }
 
 
     }
 
-    //makeLine(inTo.gameObject, Color.black, 0.3f);
-    void makeLine(GameObject lineHolder, Color color, float size)
+    void makeLine(GameObject lineHolder, float size)
     {
         GameObject lineObject = new GameObject();
         lineObject.transform.parent = lineHolder.transform;
@@ -87,11 +110,11 @@ public class Linker : MonoBehaviour
         LineRenderer pipe = lineObject.AddComponent<LineRenderer>();
         pipe.startWidth = size; pipe.endWidth = size;
         pipe.material = pipeMat;
-        pipe.material.color = color;
+        pipe.material.color = Color.black;
 
-        if(lineHolder.GetComponent<Silo>()) //add the line to the line list in the
-            lineHolder.GetComponent<Silo>().lines.Add(pipe);
-        else if (lineHolder.GetComponent<Relay>())
-            lineHolder.GetComponent<Relay>().lines.Add(pipe);
+        if(silo) //add the line to the line list in the
+            silo.lines.Add(pipe);
+        else if (relay1)
+            relay1.lines.Add(pipe);
     }
 }
