@@ -1997,6 +1997,7 @@ MonoBehaviour:
   inputCounter: {fileID: 5989574099179017488}
   outputCounter: {fileID: 2142927487488283813}
   objectName: {fileID: 5989574099378633488}
+  electricity: {fileID: 1327137457416547226}
   playerInv: {fileID: 0}
   inputID: 0
   outputID: 1

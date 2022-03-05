@@ -776,6 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceCounter: {fileID: 8825562996101204518}
   objectName: {fileID: 8825562994018886694}
+  electricity: {fileID: 7940273376251190513}
   playerInv: {fileID: 0}
   outputID: 0
   source: {fileID: 0}

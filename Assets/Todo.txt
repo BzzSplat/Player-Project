@@ -1,11 +1,8 @@
-finish generator and electrcity checks on cororutines
-fix planet atmosphere parent check for colliders
-
+!LINKER FIX NOW
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial
 refinery and tier 2 metal
-instead of machines having lists for materials have two arrays, one for a material ID and the other for that material amount
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)
@@ -24,7 +21,7 @@ BUILDING:
 
 SHIP BUILDING:
 machines such as grav generators, thrusters, chairs, ship weapons, FTL drive, ect
-FTL in three types, multiplicitive (multiplies current speed), boost (speed boost in pointing direction), and teleport (set distance and warp)
+FTL in three types, multiplicitive (multiplies current speed), boost (speed boost in pointing direction), and teleport (set distance or coords and warp)
 no grid based building (bulding stuff like in gmod, maybe alignment tool)
 
 Dictionary/Whatev:

@@ -13,14 +13,14 @@ public class InAtmosphere : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Planet")
+        if (other.tag == "Planet" || other.tag == "Ground")
             return;
 
         if(other.GetComponent<Rigidbody>())
             other.GetComponent<Rigidbody>().useGravity = true;
 
-        if(!other.gameObject.transform.parent)
-            other.gameObject.transform.SetParent(storage.transform, true);
+        if(other.transform.parent == null)
+            other.transform.SetParent(storage.transform, true);
 
         if (other.CompareTag("Player"))
             other.GetComponent<Health>().canBreathe = true;
@@ -32,7 +32,7 @@ public class InAtmosphere : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Rigidbody>())
-            other.GetComponent<Rigidbody>().AddForce (GetComponentInParent<Rigidbody>().velocity);
+            other.GetComponent<Rigidbody>().AddForce (GetComponentInParent<Rigidbody>().velocity); //why is this here this is dumb
         
     }
 
@@ -44,8 +44,13 @@ public class InAtmosphere : MonoBehaviour
         if (other.GetComponent<Rigidbody>())
             other.GetComponent<Rigidbody>().useGravity = false;
 
-        if(other.transform.parent = storage.transform)
+        if(other.transform.parent == storage.transform)
+        {
+            Debug.Log(other + " " + other.transform.parent);
             other.gameObject.transform.parent = null;
+
+        }
+
 
         if (other.CompareTag("Player"))
             other.GetComponent<Health>().canBreathe = false;
@@ -53,4 +58,4 @@ public class InAtmosphere : MonoBehaviour
         if (other.CompareTag("Living"))
             other.GetComponent<Dummy>().canBreathe = false;
     }
-}//use an update (which coems after fixed updates) to add planet velocity to objects in atmosphere, remember to Time.deltaTime
+}//use an update (which comes after fixed updates) to add planet velocity to objects in atmosphere, remember to Time.deltaTime

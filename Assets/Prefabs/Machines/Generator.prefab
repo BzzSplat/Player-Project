@@ -740,4 +740,4 @@ MonoBehaviour:
   counter2: {fileID: 0}
   menu: {fileID: 8825562994941226089, guid: c314c1c602ee4ab4b98ded6937ccb283, type: 3}
   popup: {fileID: 0}
-  produceAmount: 0
+  produceAmount: 1

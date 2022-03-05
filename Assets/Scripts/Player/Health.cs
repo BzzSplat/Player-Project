@@ -40,7 +40,6 @@ public class Health : MonoBehaviour
             suffocating = false;
             oxygen = oxygenMax;
         }
-
     }
 
     IEnumerator suffocateCoro()

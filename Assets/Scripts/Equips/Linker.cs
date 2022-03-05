@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Linker : MonoBehaviour
 {
-    bool SecondClick = false, doingElec = false;
+    bool SecondClick = false;
 
-    Machine inTo, outFrom;
+    Machine machine;
+    Relay relay1, relay2;
+    Silo silo;
 
     [SerializeField]
     Material pipeMat;
@@ -29,23 +31,35 @@ public class Linker : MonoBehaviour
 
             if (hit.transform)
             {
-                if (!SecondClick && hit.transform.gameObject.GetComponent<Machine>()) //first click
+                if (!SecondClick) //first click
                 {
-                    inTo = hit.transform.gameObject.GetComponent<Machine>();
-                    SecondClick = true;
+                    if (hit.transform.gameObject.GetComponent<Machine>())
+                        machine = hit.transform.gameObject.GetComponent<Machine>();
 
-                    if (hit.transform.gameObject.GetComponent<Generator>())
-                        doingElec = true;
+                    else if (hit.transform.gameObject.GetComponent<Relay>())
+                        relay1 = hit.transform.gameObject.GetComponent<Relay>();
+
+                    else if (hit.transform.gameObject.GetComponent<Silo>())
+                        silo = hit.transform.gameObject.GetComponent<Silo>();
+
+                    SecondClick = true;
                 }
 
                 else if(SecondClick && hit.transform.gameObject.GetComponent<Machine>()) //second click
                 {
-                    outFrom = hit.transform.gameObject.GetComponent<Machine>();
+                    if (hit.transform.gameObject.GetComponent<Machine>())
+                        machine = hit.transform.gameObject.GetComponent<Machine>();
+
+                    else if (hit.transform.gameObject.GetComponent<Relay>())
+                        if(!relay1)
+                            relay1 = hit.transform.gameObject.GetComponent<Relay>();
+                        else
+                            relay2 = hit.transform.gameObject.GetComponent<Relay>();
+
+                    else if (hit.transform.gameObject.GetComponent<Silo>())
+                        silo = hit.transform.gameObject.GetComponent<Silo>();
+
                     SecondClick = false;
-
-                    if (hit.transform.gameObject.GetComponent<Generator>())
-                        doingElec = true;
-
                     Link();
                 }
             }
@@ -54,36 +68,16 @@ public class Linker : MonoBehaviour
 
     void Link()
     {
-        if (!doingElec)
+        if (silo)
         {
-            if(inTo.link() == outFrom.link())
-            {
-               inTo.Inports = outFrom; //if input matches output connect
-                makeLine(inTo.gameObject, Color.white, 0.5f);
-                inTo.connections.Add(outFrom);
-            }
-        }
-        else
-        {
-
-            if (inTo.GetType() == typeof(Generator))
-            {
-                makeLine(inTo.gameObject, Color.black, 0.2f);
-                inTo.connections.Add(outFrom);
-            }
-            if (outFrom.GetType() == typeof(Generator))
-            {
-                makeLine(outFrom.gameObject, Color.black, 0.2f);
-                outFrom.connections.Add(outFrom);
-            }
+            silo.connections.Add(machine);
+            
         }
 
 
-        inTo = null;
-        outFrom = null;
-        doingElec = false;
     }
 
+    //makeLine(inTo.gameObject, Color.black, 0.3f);
     void makeLine(GameObject lineHolder, Color color, float size)
     {
         GameObject lineObject = new GameObject();
@@ -95,6 +89,9 @@ public class Linker : MonoBehaviour
         pipe.material = pipeMat;
         pipe.material.color = color;
 
-        lineHolder.GetComponent<Machine>().lines.Add(pipe);
+        if(lineHolder.GetComponent<Silo>()) //add the line to the line list in the
+            lineHolder.GetComponent<Silo>().lines.Add(pipe);
+        else if (lineHolder.GetComponent<Relay>())
+            lineHolder.GetComponent<Relay>().lines.Add(pipe);
     }
 }

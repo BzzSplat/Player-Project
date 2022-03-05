@@ -63,25 +63,25 @@
     <Compile Include="Assets\Scripts\Player\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\TimedDelete.cs" />
-    <Compile Include="Assets\Scripts\Machines\Converter.cs" />
     <Compile Include="Assets\Scripts\Machines\Generator.cs" />
     <Compile Include="Assets\Scripts\Player\GUI_Menu.cs" />
     <Compile Include="Assets\Scripts\Machines\Machine.cs" />
     <Compile Include="Assets\Scripts\explosion.cs" />
     <Compile Include="Assets\Scripts\Machines\BoomBox.cs" />
-    <Compile Include="Assets\Scripts\Popups\ProducerMenu.cs" />
     <Compile Include="Assets\Scripts\Dummy.cs" />
     <Compile Include="Assets\Scripts\Equips\PhysicsGunInteractionBehavior.cs" />
     <Compile Include="Assets\Scripts\Planets\InAtmosphere.cs" />
     <Compile Include="Assets\Scripts\InteractableObject.cs" />
-    <Compile Include="Assets\Scripts\Machines\Producer.cs" />
     <Compile Include="Assets\Scripts\Planets\Moveplanet.cs" />
     <Compile Include="Assets\Scripts\Equips\Weapon.cs" />
     <Compile Include="Assets\Scripts\Equips\Equip.cs" />
     <Compile Include="Assets\Scripts\Player\RigidMov.cs" />
-    <Compile Include="Assets\Scripts\Popups\ConverterMenu.cs" />
     <Compile Include="Assets\Scripts\Equips\LaserWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\CamControl.cs" />
+    <Compile Include="Assets\Scripts\Machines\Silo.cs" />
+    <Compile Include="Assets\Scripts\Machines\Miner.cs" />
+    <Compile Include="Assets\Scripts\Machines\Smelter.cs" />
+    <Compile Include="Assets\Scripts\Machines\Relay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license&amp;credits.txt" />

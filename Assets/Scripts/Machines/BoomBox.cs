@@ -11,7 +11,12 @@ public class BoomBox : InteractableObject
 
     bool isPlaying = false;
 
-    // Start is called before the first frame update
+    private void Start()
+    {
+        transform.GetChild(3).GetComponent<Renderer>().material.color = Color.black;
+        transform.GetChild(4).GetComponent<Renderer>().material.color = Color.black;
+    }
+
     public override void Interaction()
     {
         if (isPlaying)
