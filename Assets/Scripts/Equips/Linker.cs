@@ -74,6 +74,7 @@ public class Linker : MonoBehaviour
             {
                 makeLine(machine.gameObject, 0.3f);
                 silo.connections.Add(machine);
+                machine.silo = silo;
             }
             else if (relay1)
             {
@@ -87,6 +88,8 @@ public class Linker : MonoBehaviour
             {
                 makeLine(machine.gameObject, 0.3f);
                 relay1.silo.connections.Add(machine);
+                if (relay1.silo)
+                    machine.silo = relay1.silo;
             }
             else if (relay2)
             {

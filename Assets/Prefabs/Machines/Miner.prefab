@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4303871146186697714}
   - component: {fileID: 4303871146186697719}
   - component: {fileID: 4303871146186697709}
-  - component: {fileID: 4303871146186697718}
+  - component: {fileID: 6139639719794746364}
   m_Layer: 0
   m_Name: Miner
   m_TagString: Untagged
@@ -291,7 +291,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4303871146186697718
+--- !u!114 &6139639719794746364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,27 +300,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4303871146186697708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec18098f26f5a0469e6d19be4706499, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ef8932b06888d241bef99c6a26cb474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needsPlayer: 1
+  needsPlayer: 0
   Player: {fileID: 0}
-  electricityCost: 1
-  maxElectricity: 10
-  connections: []
-  lines: []
-  materials:
-  - 0
-  - 0
-  - 0
-  inputID: 0
-  outputID: 0
-  Inports: {fileID: 0}
-  OnOff: 0
-  counter1: {fileID: 4303871145589167378}
-  counter2: {fileID: 0}
-  menu: {fileID: 8825562994941226089, guid: c314c1c602ee4ab4b98ded6937ccb283, type: 3}
-  popup: {fileID: 0}
+  onOff: 0
+  silo: {fileID: 0}
 --- !u!1 &4303871146459251150
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2280898700595238395}
   - component: {fileID: 2280898700595238392}
   - component: {fileID: 2280898700595238393}
-  - component: {fileID: 6250633232289230578}
+  - component: {fileID: 8437469225979347149}
   m_Layer: 0
   m_Name: Smelter
   m_TagString: Untagged
@@ -199,7 +199,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6250633232289230578
+--- !u!114 &8437469225979347149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,27 +208,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2280898700595238398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82798d5ac75ad4342872ac62f36c5e0c, type: 3}
+  m_Script: {fileID: 11500000, guid: c1c44de5862753846918afd0c0317a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needsPlayer: 1
+  needsPlayer: 0
   Player: {fileID: 0}
-  electricityCost: 1
-  maxElectricity: 10
-  connections: []
-  lines: []
-  materials:
-  - 0
-  - 0
-  - 0
-  inputID: 0
-  outputID: 1
-  Inports: {fileID: 0}
-  OnOff: 0
-  counter1: {fileID: 7295506823239106219}
-  counter2: {fileID: 2985735454840305611}
-  menu: {fileID: 5989574100300739423, guid: 1909e44cfd5fb304997f5601e391d5be, type: 3}
-  popup: {fileID: 0}
+  onOff: 0
+  silo: {fileID: 0}
 --- !u!1 &2280898701255651933
 GameObject:
   m_ObjectHideFlags: 0
