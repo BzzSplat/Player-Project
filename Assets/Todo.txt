@@ -1,4 +1,5 @@
-!LINKER FIX NOW
+silo popup menu
+indicator light on machines to signal on or off, and remove counter on screen
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial

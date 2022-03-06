@@ -5,7 +5,6 @@ using UnityEngine;
 public class Relay : MonoBehaviour
 {
     public Silo silo;
-    public List<Machine> machines;
     public List<LineRenderer> lines;
 
     public virtual void Update()

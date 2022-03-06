@@ -7,6 +7,7 @@ public class Machine : InteractableObject
 {
     public bool onOff;
     public Silo silo;
+    public Transform relay;
 
     public override void Interaction()
     {

@@ -45,8 +45,13 @@ public class Silo : InteractableObject
 
             if (Vector3.Distance(lines[i].transform.position, transform.position) > 5)
             {
+                if (connections[i].relay && Vector3.Distance(connections[i].transform.position, connections[i].relay.position) > 5)
+                {
+                    connections.RemoveAt(i);
+                }
                 Destroy(lines[i].gameObject);
                 lines.RemoveAt(i);
+                connections.RemoveAt(i);
             }
         }
     }
