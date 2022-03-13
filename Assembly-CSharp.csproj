@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8ABD6F41-2315-CCAF-3C67-BF8DB6733CFA}</ProjectGuid>
+    <ProjectGuid>{BEC851FF-7A4E-ED3C-DD23-01D968EB1575}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,7 +53,7 @@
     <UnityVersion>2020.3.29f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Health.cs" />
@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Explosive.cs" />
     <Compile Include="Assets\Scripts\Equips\Linker.cs" />
     <Compile Include="Assets\Scripts\Machines\Smelter.cs" />
+    <Compile Include="Assets\Scripts\MaterialChanger.cs" />
     <Compile Include="Assets\Scripts\Player\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\TimedDelete.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Assets\Scripts\Equips\LaserWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\CamControl.cs" />
     <Compile Include="Assets\Scripts\Machines\Silo.cs" />
-    <Compile Include="Assets\Scripts\MaterialChanger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license&amp;credits.txt" />
