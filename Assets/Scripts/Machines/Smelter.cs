@@ -8,10 +8,12 @@ public class Smelter : Machine
     {
         silo.workMaterials[0] += -1;
         silo.workMaterials[1] += 1;
+        silo.workMaterials[2] -= 1;
     }
     public override void removeMaterials()
     {
         silo.workMaterials[0] -= -1;
         silo.workMaterials[1] -= 1;
+        silo.workMaterials[2] += 1;
     }
 }

@@ -1,9 +1,10 @@
-silo popup menu
-indicator light on machines to signal on or off, and remove counter on screen
+figure out scrollable menus and how make them change length
+~silo popup menu
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial
 refinery and tier 2 metal
+(wait till I even Make the relays)relay checkDistance function, causes a chain reaction down a line of relays to check if they are all within reach of eachother and break off relays and machines that are not
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)
@@ -24,8 +25,12 @@ SHIP BUILDING:
 machines such as grav generators, thrusters, chairs, ship weapons, FTL drive, ect
 FTL in three types, multiplicitive (multiplies current speed), boost (speed boost in pointing direction), and teleport (set distance or coords and warp)
 no grid based building (bulding stuff like in gmod, maybe alignment tool)
+thruster paths ideas:
+-Fulksor Engine: a very efficient but weaker thruster (name comes from fusion because it is efficent, or at least I think so)
+-Krater Engine: a stronger thruster but very not efficient (name from Kratos, a god of strength and power and it's ability to leave craters after liftoff)
+-Jackson Engine: a middle point between the two other thrusters (name from jack of all trades)
 
-Dictionary/Whatev:
+Resource Dictionary:
 Resource ID# in order:
 0 - raw metal
 1 - metal T1

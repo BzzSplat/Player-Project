@@ -8,6 +8,15 @@ public class Machine : InteractableObject
     public bool onOff;
     public Silo silo;
     public Transform relay;
+    [SerializeField]
+    Renderer indicator;
+
+    private void Start()
+    {
+        indicator.material.color = Color.black;
+        indicator.material.EnableKeyword("_EMISSION");
+        indicator.material.SetColor("_EmissionColor", Color.red);
+    }
 
     public override void Interaction()
     {
@@ -16,12 +25,14 @@ public class Machine : InteractableObject
             onOff = false;
             if (silo)
                 removeMaterials();
+            indicator.material.SetColor("_EmissionColor", Color.red);
         }
         else if (!onOff && silo)
         {
             onOff = true;
             if (silo)
                 addMaterials();
+            indicator.material.SetColor("_EmissionColor", Color.green);
         }
 
     }

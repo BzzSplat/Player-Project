@@ -34,33 +34,43 @@ public class Linker : MonoBehaviour
                 if (!SecondClick) //first click
                 {
                     if (hit.transform.gameObject.GetComponent<Machine>())
+                    {
                         machine = hit.transform.gameObject.GetComponent<Machine>();
-
+                        SecondClick = true;
+                    }
                     else if (hit.transform.gameObject.GetComponent<Relay>())
+                    {
                         relay1 = hit.transform.gameObject.GetComponent<Relay>();
-
+                        SecondClick = true;
+                    }
                     else if (hit.transform.gameObject.GetComponent<Silo>())
+                    {
                         silo = hit.transform.gameObject.GetComponent<Silo>();
-
-                    SecondClick = true;
+                        SecondClick = true;
+                    }     
+                    
                 }
-
-                else if(SecondClick && hit.transform.gameObject.GetComponent<Machine>()) //second click
+                else //second click
                 {
+
                     if (hit.transform.gameObject.GetComponent<Machine>())
+                    {
                         machine = hit.transform.gameObject.GetComponent<Machine>();
-
+                        SecondClick = false;
+                        Link();
+                    }
                     else if (hit.transform.gameObject.GetComponent<Relay>())
-                        if(!relay1)
-                            relay1 = hit.transform.gameObject.GetComponent<Relay>();
-                        else
-                            relay2 = hit.transform.gameObject.GetComponent<Relay>();
-
+                    {
+                        relay1 = hit.transform.gameObject.GetComponent<Relay>();
+                        SecondClick = false;
+                        Link();
+                    }
                     else if (hit.transform.gameObject.GetComponent<Silo>())
+                    {
                         silo = hit.transform.gameObject.GetComponent<Silo>();
-
-                    SecondClick = false;
-                    Link();
+                        SecondClick = false;
+                        Link();
+                    }
                 }
             }
         }
@@ -100,8 +110,6 @@ public class Linker : MonoBehaviour
                     relay1.silo = relay2.silo;
             }
         }
-
-
     }
 
     void makeLine(GameObject lineHolder, float size)

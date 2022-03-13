@@ -6,8 +6,15 @@ public class Silo : InteractableObject
 {
     public List<Machine> connections;
     public float[] materials, workMaterials;
-    public bool onOff, canWork = true;
+    public bool onOff = true, canWork;
     public List<LineRenderer> lines;
+    [SerializeField]
+    GameObject popup;
+
+    private void Start()
+    {
+        StartCoroutine("work");
+    }
 
     IEnumerator work()
     {
@@ -27,13 +34,23 @@ public class Silo : InteractableObject
 
     public void checkMaterialCounts()
     {
+        canWork = true;
         for (int i = 0; i < materials.Length; i++) //check to see if any values will be negative
         {
             if (materials[i] + workMaterials[i] < 0)
                 canWork = false;
-            else
-                canWork = true;
         }
+    }
+
+    public override void Interaction()
+    {
+        Transform spawn = Player.transform.GetChild(0).GetChild(2);
+        Player.transform.GetChild(0).GetComponent<CamControl>().freeMouse();
+        
+        
+        GameObject Pops = Instantiate(popup, spawn);
+        Pops.GetComponent<SiloPopup>().cam = Player.transform.GetChild(0).GetComponent<CamControl>();
+        Pops.GetComponent<SiloPopup>().silo = this;
     }
 
     public virtual void Update()
@@ -45,13 +62,30 @@ public class Silo : InteractableObject
 
             if (Vector3.Distance(lines[i].transform.position, transform.position) > 5)
             {
+                //check if object is connected by relay then measure that distance        !make sure to check for the relay's distance too, and or if that relay links to another!
                 if (connections[i].relay && Vector3.Distance(connections[i].transform.position, connections[i].relay.position) > 5)
                 {
+                    if (connections[i].onOff)
+                    {
+                        connections[i].Interaction();
+                    }
+
+                    connections[i].silo = null;
                     connections.RemoveAt(i);
                 }
-                Destroy(lines[i].gameObject);
-                lines.RemoveAt(i);
-                connections.RemoveAt(i);
+                else
+                {
+                    Destroy(lines[i].gameObject);
+                    lines.RemoveAt(i);
+
+                    if (connections[i].onOff)
+                    {
+                        connections[i].Interaction();
+                    }
+
+                    connections[i].silo = null;
+                    connections.RemoveAt(i);
+                }
             }
         }
     }

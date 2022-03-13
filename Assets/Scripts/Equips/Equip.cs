@@ -11,54 +11,62 @@ public class Equip : MonoBehaviour
 
     private void Start()
     {
-        SwitchEquip(Items[0]);
+        StartCoroutine(SwitchEquip(Items[0]));
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && Items[0])
         {
-            SwitchEquip(Items[0]);
+            StartCoroutine(SwitchEquip(Items[0]));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && Items[1])
         {
-            SwitchEquip(Items[1]);
+            StartCoroutine(SwitchEquip(Items[1]));
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && Items[2])
         {
-            SwitchEquip(Items[2]);
+            StartCoroutine(SwitchEquip(Items[2]));
         }
         if (Input.GetKeyDown(KeyCode.Alpha4) && Items[3])
         {
-            SwitchEquip(Items[3]);
+            StartCoroutine(SwitchEquip(Items[3]));
         }
         if (Input.GetKeyDown(KeyCode.Alpha5) && Items[4])
         {
-            SwitchEquip(Items[4]);
+            StartCoroutine(SwitchEquip(Items[4]));
         }
         if (Input.GetKeyDown(KeyCode.Alpha6) && Items[5])
         {
-            SwitchEquip(Items[5]);
+            StartCoroutine(SwitchEquip(Items[5]));
         }
 
         if (Input.GetKeyDown(KeyCode.X))
             dropItem();
     }
 
-    void SwitchEquip(GameObject newItem)
+    IEnumerator SwitchEquip(GameObject newItem)
     {
         if (CurrentItem && transform.GetChild(1).GetChild(0))
-            StartCoroutine(delOldItem(transform.GetChild(1).GetChild(0).gameObject));
+            StartCoroutine(delOldItem());
 
         CurrentItem = newItem;
         GameObject equipped = Instantiate(newItem, spawnPos);
         equipped.GetComponent<Weapon>().camera = GetComponent<Camera>();
         equipped.GetComponent<Weapon>().Holder = transform.parent.gameObject;
+
+        yield return null;
     }
 
-    IEnumerator delOldItem(GameObject oldItem)
+    IEnumerator delOldItem()
     {
-        Destroy(oldItem);
+        int delAmount = transform.GetChild(1).childCount;
+
+        for(int i = 0; i < delAmount; i++) //fixes holding multiple items bug, at least when switching to a new item
+        {
+            Destroy(transform.GetChild(1).GetChild(i).gameObject);
+        }
+
         yield return null;
     }
 
@@ -73,7 +81,7 @@ public class Equip : MonoBehaviour
         GameObject dropped = Instantiate(CurrentItem, spawnPos);
         if (CurrentItem)
         {
-            StartCoroutine(delOldItem(transform.GetChild(1).GetChild(0).gameObject));
+            StartCoroutine(delOldItem());
             for(int i = 0; i < Items.Count; i++)
             {
                 if (CurrentItem == Items[i])

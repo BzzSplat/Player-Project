@@ -45,11 +45,8 @@ public class InAtmosphere : MonoBehaviour
             other.GetComponent<Rigidbody>().useGravity = false;
 
         if(other.transform.parent == storage.transform)
-        {
-            Debug.Log(other + " " + other.transform.parent);
             other.gameObject.transform.parent = null;
 
-        }
 
 
         if (other.CompareTag("Player"))
