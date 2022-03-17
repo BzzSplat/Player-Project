@@ -1,5 +1,4 @@
-figure out scrollable menus and how make them change length
-~silo popup menu
+rework player inventory, connect player to silo
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial

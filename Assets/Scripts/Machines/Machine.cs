@@ -37,7 +37,7 @@ public class Machine : InteractableObject
 
     }
 
-    public virtual void addMaterials()
+    public virtual void addMaterials() //consider turning this into a short function like getWorkInfo with a bool to decide weather each element should be turned negative for use
     {
         //silo.workMaterials[index] += number;
     }
@@ -46,19 +46,12 @@ public class Machine : InteractableObject
         //silo.workMaterials[index] -= number;
     }
 
-    /*public virtual void Update()
+    public virtual int[,] getWorkInfo() //for silo menu
     {
-        for (int i = 0; i < connections.Count; i++)
-        {
-            lines[i].SetPosition(1, connections[i].transform.position);
-            lines[i].SetPosition(0, transform.position);
+        int[,] info = new int[1, 2] {
+            { 2, -1 }, //type, amount
+        };
 
-            if (Vector3.Distance(connections[i].transform.position, transform.position) > 5)
-            {
-                Destroy(lines[i].gameObject);
-                lines.RemoveAt(i);
-                connections.RemoveAt(i);
-            }
-        }
-    }*/
+        return info;
+    }
 }

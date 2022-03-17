@@ -12,4 +12,13 @@ public class Generator : Machine
     {
         silo.workMaterials[2] -= 5;
     }
+
+    public override int[,] getWorkInfo()
+    {
+        int[,] info = new int[1, 2] {
+            { 2, 5 },
+        };
+
+        return info;
+    }
 }

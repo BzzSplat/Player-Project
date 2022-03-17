@@ -9,7 +9,7 @@ public class Silo : InteractableObject
     public bool onOff = true, canWork;
     public List<LineRenderer> lines;
     [SerializeField]
-    GameObject popup;
+    GameObject popup, owner;
 
     private void Start()
     {
