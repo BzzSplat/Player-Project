@@ -1,4 +1,5 @@
 rework player inventory, connect player to silo
+game manager constants
 toolgun spawner, select object in spawn menu and use toolgun to spawn, object's up is facing away from surface it was spawned on
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial

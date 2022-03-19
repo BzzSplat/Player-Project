@@ -301,7 +301,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3347946986500012219}
   - component: {fileID: 4742529731445240021}
-  - component: {fileID: 5937890603016458172}
   - component: {fileID: 8226184692964472629}
   m_Layer: 0
   m_Name: Machines
@@ -353,19 +352,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &5937890603016458172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2545902919725809566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
 --- !u!114 &8226184692964472629
 MonoBehaviour:
   m_ObjectHideFlags: 0
