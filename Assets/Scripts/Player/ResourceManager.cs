@@ -10,7 +10,7 @@ public class ResourceManager : MonoBehaviour
 
     public List<float> materials = new List<float>();
     [SerializeField]
-    List<Text> materialDisplay = new List<Text>();
+    Text[] materialDisplay = new Text[2];
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class ResourceManager : MonoBehaviour
 
     void Update()
     {
-        materialDisplay[0].text = materials[0].ToString();
-        materialDisplay[1].text = materials[1].ToString();
+        //materialDisplay[0].text = materials[0].ToString();
+        //materialDisplay[1].text = materials[1].ToString();
     }
 }

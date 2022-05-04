@@ -46,8 +46,9 @@ public class Silo : InteractableObject
     {
         Transform spawn = Player.transform.GetChild(0).GetChild(2);
         Player.transform.GetChild(0).GetComponent<CamControl>().freeMouse();
-        
-        
+        Player.transform.GetChild(0).GetComponent<GUI_Menu>().silo = this;
+
+
         GameObject Pops = Instantiate(popup, spawn);
         Pops.GetComponent<SiloPopup>().cam = Player.transform.GetChild(0).GetComponent<CamControl>();
         Pops.GetComponent<SiloPopup>().silo = this;

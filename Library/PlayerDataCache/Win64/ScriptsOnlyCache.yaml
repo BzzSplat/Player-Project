@@ -3,8 +3,6 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BoomBox
     - CamControl
-    - Converter
-    - ConverterMenu
     - Dummy
     - Equip
     - Explosive
@@ -15,12 +13,16 @@ ScriptsOnlyBuild:
     - InAtmosphere
     - LaserWeapon
     - Linker
+    - MaterialChanger
+    - Miner
     - Moveplanet
     - PhysicsGunInteractionBehavior
-    - Producer
-    - ProducerMenu
-    - ResourceManager
     - RigidMov
+    - Seat
+    - Silo
+    - SiloPopup
+    - Smelter
+    - SpawnButton
     - TimedDelete
     - Weapon
     - Welder
@@ -33,11 +35,16 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
@@ -80,63 +87,77 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1438}
     - Class: 114
-      Script: {instanceID: 1532}
+      Script: {instanceID: 1456}
     - Class: 114
-      Script: {instanceID: 1630}
+      Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1632}
     - Class: 114
-      Script: {instanceID: 1858}
+      Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 2178}
+      Script: {instanceID: 1860}
     - Class: 114
-      Script: {instanceID: 2194}
+      Script: {instanceID: 1882}
     - Class: 114
-      Script: {instanceID: 2258}
+      Script: {instanceID: 1974}
     - Class: 114
-      Script: {instanceID: 2318}
+      Script: {instanceID: 2018}
     - Class: 114
-      Script: {instanceID: 2370}
+      Script: {instanceID: 2202}
     - Class: 114
-      Script: {instanceID: 2434}
+      Script: {instanceID: 2266}
     - Class: 114
-      Script: {instanceID: 2610}
+      Script: {instanceID: 2326}
     - Class: 114
-      Script: {instanceID: 2760}
+      Script: {instanceID: 2442}
     - Class: 114
-      Script: {instanceID: 2798}
+      Script: {instanceID: 2506}
     - Class: 114
-      Script: {instanceID: 2812}
+      Script: {instanceID: 2620}
     - Class: 114
-      Script: {instanceID: 2888}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 3096}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 3162}
+      Script: {instanceID: 2822}
     - Class: 114
-      Script: {instanceID: 3312}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 3330}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3384}
+      Script: {instanceID: 3106}
     - Class: 114
-      Script: {instanceID: 3550}
+      Script: {instanceID: 3172}
     - Class: 114
-      Script: {instanceID: 3736}
+      Script: {instanceID: 3340}
     - Class: 114
-      Script: {instanceID: 3782}
+      Script: {instanceID: 3394}
     - Class: 114
-      Script: {instanceID: 3996}
+      Script: {instanceID: 3436}
     - Class: 114
-      Script: {instanceID: 4040}
+      Script: {instanceID: 3560}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 3610}
     - Class: 114
-      Script: {instanceID: 4374}
+      Script: {instanceID: 3634}
     - Class: 114
-      Script: {instanceID: 4398}
+      Script: {instanceID: 3790}
     - Class: 114
-      Script: {instanceID: 4430}
+      Script: {instanceID: 4004}
+    - Class: 114
+      Script: {instanceID: 4048}
+    - Class: 114
+      Script: {instanceID: 4216}
+    - Class: 114
+      Script: {instanceID: 4394}
+    - Class: 114
+      Script: {instanceID: 4406}
+    - Class: 114
+      Script: {instanceID: 4438}
+    - Class: 114
+      Script: {instanceID: 4490}
+    - Class: 114
+      Script: {instanceID: 4528}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -168,16 +189,22 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 699619b86d9359741a4f58540298c80b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 040dd48e3a027d5424519a5fa2009df4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 243ff884e741297802f11f89e53078c6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Seat
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -264,16 +291,34 @@ ScriptsOnlyBuild:
     className: Linker
   - hash:
       serializedVersion: 2
+      Hash: 79f8fd36075147b5e2ffe8e9f7348b07
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Smelter
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
   - hash:
       serializedVersion: 2
+      Hash: 20b560ecd346e81b57ccd1d643ee3473
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MaterialChanger
+  - hash:
+      serializedVersion: 2
       Hash: 800c50acba124432abb4cf0d47202e06
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 699619b86d9359741a4f58540298c80b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: f1d735cc1a21c3704ab52568f4fbfcf8
@@ -312,10 +357,10 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: e45e54e4438d973d5e87200a410c0886
+      Hash: 413d32aec2940f61edc419a450320118
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Converter
+    className: Relay
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -354,6 +399,12 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 79f8fd36075147b5e2ffe8e9f7348b07
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Miner
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestRunner.Utils
@@ -390,7 +441,7 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 00f17ce73f51feb4889b91cfdb69de17
+      Hash: 79f8fd36075147b5e2ffe8e9f7348b07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Generator
@@ -408,7 +459,7 @@ ScriptsOnlyBuild:
     className: Scrollbar
   - hash:
       serializedVersion: 2
-      Hash: 9c1b57e8bb77fb2fc3336c551afa6e14
+      Hash: d4101b38fd077e859c48363057cb894d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GUI_Menu
@@ -456,7 +507,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: e45e54e4438d973d5e87200a410c0886
+      Hash: 79f8fd36075147b5e2ffe8e9f7348b07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Machine
@@ -498,6 +549,12 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
+      Hash: aa391111b7ffef8debdc543d370443dc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TextChanger
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -532,12 +589,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: PositionAsUV1
-  - hash:
-      serializedVersion: 2
-      Hash: 17e3283ff9253e1b69992f63d437e609
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ProducerMenu
   - hash:
       serializedVersion: 2
       Hash: 4e29c29e2448cca1e297e9a160af087e
@@ -594,6 +645,12 @@ ScriptsOnlyBuild:
     className: InAtmosphere
   - hash:
       serializedVersion: 2
+      Hash: 3a88180db1da728330818ecb62e5aba2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SiloPopup
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -612,12 +669,6 @@ ScriptsOnlyBuild:
     className: InteractableObject
   - hash:
       serializedVersion: 2
-      Hash: e45e54e4438d973d5e87200a410c0886
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Producer
-  - hash:
-      serializedVersion: 2
       Hash: 3165968ba45c74472d279ba04455fccb
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -628,12 +679,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
-  - hash:
-      serializedVersion: 2
-      Hash: 040dd48e3a027d5424519a5fa2009df4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
   - hash:
       serializedVersion: 2
       Hash: 5d064456c40f7c34690dc0c9d079accc
@@ -702,10 +747,10 @@ ScriptsOnlyBuild:
     className: RigidMov
   - hash:
       serializedVersion: 2
-      Hash: b81f7a59e8271bf890155ef3b5050de4
+      Hash: a2ed497db024a51e53d7871f6b431a8a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ConverterMenu
+    className: SpawnButton
   - hash:
       serializedVersion: 2
       Hash: 31cb3f0088339c76e417d2dafc59a82e
@@ -742,6 +787,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: 3448a86ece60b1c3c4da7fe8d9e628f6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Silo
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

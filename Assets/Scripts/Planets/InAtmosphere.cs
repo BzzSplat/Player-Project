@@ -5,10 +5,11 @@ using UnityEngine;
 public class InAtmosphere : MonoBehaviour
 {
     public GameObject storage;
+    Vector3 oldPosition;
 
     private void Start()
     {
-        storage = transform.parent.GetChild(2).gameObject;
+        //storage = transform.parent.GetChild(2).gameObject;
     }
 
     void OnTriggerEnter(Collider other)
@@ -16,8 +17,11 @@ public class InAtmosphere : MonoBehaviour
         if (other.tag == "Planet" || other.tag == "Ground")
             return;
 
-        if(other.GetComponent<Rigidbody>())
+        if (other.GetComponent<Rigidbody>())
+        {
             other.GetComponent<Rigidbody>().useGravity = true;
+        }
+
 
         if(other.transform.parent == null)
             other.transform.SetParent(storage.transform, true);
@@ -29,16 +33,29 @@ public class InAtmosphere : MonoBehaviour
             other.GetComponent<Dummy>().canBreathe = true;
     }
 
-    void OnTriggerStay(Collider other)
+    private void FixedUpdate()
     {
-        if (other.GetComponent<Rigidbody>())
-            other.GetComponent<Rigidbody>().AddForce (GetComponentInParent<Rigidbody>().velocity); //why is this here this is dumb
-        
+        for(int i = 0; i < storage.transform.childCount; i++)
+        {
+            Vector3 newPos = transform.position - oldPosition;
+            storage.transform.GetChild(i).position += newPos;
+        }
+        oldPosition = transform.position;
     }
+
+    /*void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Planet" || other.tag == "Ground")
+            return;
+
+        Vector3 newPos = new Vector3(0.06f,0,0);
+        other.transform.position += newPos;
+        Debug.Log(transform.position - oldPosition);
+    }*/
 
     void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Planet")
+        if (other.tag == "Planet" || other.tag == "Ground")
             return;
 
         if (other.GetComponent<Rigidbody>())

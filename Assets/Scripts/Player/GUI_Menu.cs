@@ -6,29 +6,38 @@ using UnityEngine.UI;
 public class GUI_Menu : MonoBehaviour
 {
     public new Camera camera;
-    public GameObject menuScreen;
+    public GameObject menuScreen, materialsCover, costBoard, costPrefab;
     [SerializeField]
-    ResourceManager materials;
+    List<GameObject> buttonInspects = new List<GameObject>();
+    public Silo silo;
     [SerializeField]
     Health playerHealth;
 
-    [Header("Base Components"), SerializeField]
+    [SerializeField]
     Image cross1, cross2, oxygenMeter;
     [SerializeField]
     Text health;
-
-
-    [Header("Spawn Menu")]
     [SerializeField]
-    List<GameObject> spawnables = new List<GameObject>();
-    [SerializeField]
-    List<int> spawnCosts = new List<int>();
+    Text[] materialCounts;
 
-
-    public void spawnitem(int index)
+    public void spawnitem(int[] ID, int[] cost, GameObject thing)
     {
-        if (materials.materials[1] < spawnCosts[index])
+        if (!silo)
             return;
+
+        bool costCheck = false;
+        for(int i = 0; i < ID.Length; i++) //check if player can afford the item
+        {
+            if (silo.materials[ID[i]] - cost[i] < 0)
+                costCheck = true;
+        }
+        if (costCheck)
+            return;
+
+        for (int i = 0; i < ID.Length; i++)
+        {
+            silo.materials[ID[i]] -= cost[i]; //payment time
+        }
 
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -39,8 +48,7 @@ public class GUI_Menu : MonoBehaviour
         else
             endPoint = ray.GetPoint(1000);
 
-        Instantiate(spawnables[index], endPoint, Quaternion.identity);
-        materials.materials[1] -= spawnCosts[index];//spawn cost
+        Instantiate(thing, endPoint, Quaternion.identity);
     }
 
     void Update()
@@ -81,11 +89,44 @@ public class GUI_Menu : MonoBehaviour
             changeCrosshairColor(Color.white);
         }
 
+        if(menuScreen.activeSelf == true)
+        {
+            if (silo)
+            {
+                materialsCover.SetActive(false);
+                for (int i = 0; i < materialCounts.Length; i++)
+                {
+                    materialCounts[i].text = silo.materials[i].ToString();
+                }
+            }
+            else
+                materialsCover.SetActive(true);
+        }
     }
 
     public void changeCrosshairColor(Color clr)
     {
         cross1.color = clr;
         cross2.color = clr;
+    }
+
+    public void costSelect(int[] ID, int[] cost)
+    {
+        for(int i = 0; i < ID.Length; i++)
+        {
+            GameObject newCost = Instantiate(costPrefab, costBoard.transform);
+            newCost.GetComponent<Image>().sprite = materialCounts[ID[i]].transform.parent.GetComponent<Image>().sprite;
+            newCost.transform.GetChild(0).GetComponent<Text>().text = cost[i].ToString();
+            buttonInspects.Add(newCost);
+        }
+    }
+
+    public void costDeselect()
+    {
+        foreach (GameObject cost in buttonInspects)
+        {
+            Destroy(cost);
+        }
+        buttonInspects.Clear();
     }
 }

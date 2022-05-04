@@ -56,12 +56,13 @@
     <Analyzer Include="D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Misc Interactables\Seat.cs" />
     <Compile Include="Assets\Scripts\Player\Health.cs" />
     <Compile Include="Assets\Scripts\Equips\Welder.cs" />
     <Compile Include="Assets\Scripts\Explosive.cs" />
     <Compile Include="Assets\Scripts\Equips\Linker.cs" />
     <Compile Include="Assets\Scripts\Machines\Smelter.cs" />
-    <Compile Include="Assets\Scripts\MaterialChanger.cs" />
+    <Compile Include="Assets\Scripts\Changers\MaterialChanger.cs" />
     <Compile Include="Assets\Scripts\Player\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\TimedDelete.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Scripts\Machines\Machine.cs" />
     <Compile Include="Assets\Scripts\explosion.cs" />
     <Compile Include="Assets\Scripts\Machines\BoomBox.cs" />
+    <Compile Include="Assets\Scripts\Changers\TextChanger.cs" />
     <Compile Include="Assets\Scripts\Dummy.cs" />
     <Compile Include="Assets\Scripts\Equips\PhysicsGunInteractionBehavior.cs" />
     <Compile Include="Assets\Scripts\Planets\InAtmosphere.cs" />
@@ -81,10 +83,10 @@
     <Compile Include="Assets\Scripts\Equips\Weapon.cs" />
     <Compile Include="Assets\Scripts\Equips\Equip.cs" />
     <Compile Include="Assets\Scripts\Player\RigidMov.cs" />
+    <Compile Include="Assets\Scripts\Popups\SpawnButton.cs" />
     <Compile Include="Assets\Scripts\Equips\LaserWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\CamControl.cs" />
     <Compile Include="Assets\Scripts\Machines\Silo.cs" />
-    <Compile Include="Assets\Scripts\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license&amp;credits.txt" />

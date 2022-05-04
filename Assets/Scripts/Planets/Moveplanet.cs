@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class Moveplanet : MonoBehaviour
 {
-    public int speed = 10;
-    private Vector3 startPosition;
-    private Vector3 endPosition;
-    private Rigidbody rBody;
+    public int speed;
+    Vector3 startPosition;
+    Vector3 endPosition;
+    Rigidbody rb;
 
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(speed, 0, 0);
         startPosition = this.transform.position;
         endPosition = new Vector3(-10, 0, 0);
     }
 
     void FixedUpdate()
     {
-        if(rBody.position == endPosition)
+
+        /*if(rb.position == endPosition) //no, movement is dynamic not fixed
         {
-            //StartCoroutine(Vector3LerpCoroutine(this.gameObject, startPosition, speed));
-            //transform.position = startPosition;
+            StartCoroutine(Vector3LerpCoroutine(this.gameObject, startPosition, speed));
+            transform.position = startPosition;
         }
-        if(rBody.position == startPosition)
+        if(rb.position == startPosition)
         {
-            //StartCoroutine(Vector3LerpCoroutine(this.gameObject, endPosition, speed));
-            //transform.position = endPosition;
-        }
+            StartCoroutine(Vector3LerpCoroutine(this.gameObject, endPosition, speed));
+            transform.position = endPosition;
+        }*/
     }
 
     IEnumerator Vector3LerpCoroutine(GameObject obj, Vector3 target, float speed)
@@ -35,9 +37,9 @@ public class Moveplanet : MonoBehaviour
         Vector2 startPosition = obj.transform.position;
         float time = 0f;
 
-        while (rBody.position != target)
+        while (rb.position != target)
         {
-            rBody.MovePosition(Vector2.Lerp(startPosition, target, (time / Vector2.Distance(startPosition, target)) * speed));
+            rb.MovePosition(Vector2.Lerp(startPosition, target, (time / Vector2.Distance(startPosition, target)) * speed));
             time += Time.deltaTime;
             yield return null;
         }
