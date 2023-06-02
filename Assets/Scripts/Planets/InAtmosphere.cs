@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class InAtmosphere : MonoBehaviour
 {
-    public GameObject storage;
+    public List<GameObject> storage = new List<GameObject>();
     Vector3 oldPosition;
-
-    private void Start()
-    {
-        //storage = transform.parent.GetChild(2).gameObject;
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,11 +15,13 @@ public class InAtmosphere : MonoBehaviour
         if (other.GetComponent<Rigidbody>())
         {
             other.GetComponent<Rigidbody>().useGravity = true;
+            other.GetComponent<Rigidbody>().velocity += other.GetComponent<Rigidbody>().velocity - transform.GetComponentInParent<Rigidbody>().velocity;
+
         }
 
 
         if(other.transform.parent == null)
-            other.transform.SetParent(storage.transform, true);
+            storage.Add(other.gameObject);
 
         if (other.CompareTag("Player"))
             other.GetComponent<Health>().canBreathe = true;
@@ -35,10 +32,14 @@ public class InAtmosphere : MonoBehaviour
 
     private void FixedUpdate()
     {
-        for(int i = 0; i < storage.transform.childCount; i++)
+        Vector3 newPos = transform.position - oldPosition;
+        for (int i = 0; i < storage.Count; i++)
         {
-            Vector3 newPos = transform.position - oldPosition;
-            storage.transform.GetChild(i).position += newPos;
+            if (storage[i] == null)
+                storage.RemoveAt(i);
+            else
+                storage[i].transform.position += newPos;
+            //Debug.Log($"Moving {storage.transform.GetChild(i).name}, {newPos}");
         }
         oldPosition = transform.position;
     }
@@ -59,12 +60,13 @@ public class InAtmosphere : MonoBehaviour
             return;
 
         if (other.GetComponent<Rigidbody>())
+        {
             other.GetComponent<Rigidbody>().useGravity = false;
+            other.GetComponent<Rigidbody>().velocity += transform.GetComponentInParent<Rigidbody>().velocity; //make the object keep with the planet
+        }
 
-        if(other.transform.parent == storage.transform)
-            other.gameObject.transform.parent = null;
-
-
+        if (storage.Contains(other.gameObject))
+            storage.Remove(other.gameObject);
 
         if (other.CompareTag("Player"))
             other.GetComponent<Health>().canBreathe = false;

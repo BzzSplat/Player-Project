@@ -589,6 +589,9 @@ MonoBehaviour:
   emmissionColor: {r: 0, g: 0.5019608, b: 0.5019608, a: 0}
   useMainColor: 0
   useEmissionColor: 1
+  continuousUpdate: 0
+  scroll: 0
+  scrollSpeed: {x: 0, y: 0}
 --- !u!1 &7121508420066271679
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +603,7 @@ GameObject:
   - component: {fileID: 7121508420066271650}
   - component: {fileID: 7121508420066271649}
   - component: {fileID: 7121508420066271678}
-  - component: {fileID: 2048551155}
+  - component: {fileID: 7069590933418216487}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -648,12 +651,12 @@ Rigidbody:
   m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2048551155
+--- !u!114 &7069590933418216487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -665,9 +668,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac47dfc28f63fcd44a43a9fae587f6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needsPlayer: 1
+  needsPlayer: 0
   Player: {fileID: 0}
   onOff: 0
   silo: {fileID: 0}
   relay: {fileID: 0}
-  indicator: {fileID: 9199508731850538709}
+  indicator: {fileID: 0}

@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
   - Planet
-  - Atmosphere
   - Living
   layers:
   - Default
@@ -17,8 +15,8 @@ TagManager:
   - UI
   - Player
   - Ground
-  - Planet
-  - 
+  - Atmosphere
+  - Planet Collider
   - 
   - 
   - 

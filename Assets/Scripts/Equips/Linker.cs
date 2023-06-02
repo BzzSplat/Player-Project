@@ -24,7 +24,7 @@ public class Linker : MonoBehaviour
             RaycastHit hit;
             Vector3 endPoint;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 2f))
                 endPoint = hit.point;
             else
                 endPoint = ray.GetPoint(1000);

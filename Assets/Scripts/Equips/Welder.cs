@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Welder : MonoBehaviour // if ray hti nothing just stop, so no errors
+public class Welder : MonoBehaviour // if ray hit nothing just stop, so no errors
 {
     bool SecondClick = false, smartWeld = false;
     GameObject obj1, obj2;
@@ -18,7 +18,7 @@ public class Welder : MonoBehaviour // if ray hti nothing just stop, so no error
             RaycastHit hit;
             Vector3 endPoint;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 5f))
                 endPoint = hit.point;
             else
                 endPoint = ray.GetPoint(1000);
@@ -51,7 +51,7 @@ public class Welder : MonoBehaviour // if ray hti nothing just stop, so no error
             RaycastHit hit;
             Vector3 endPoint;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 5f))
                 endPoint = hit.point;
             else
                 endPoint = ray.GetPoint(1000);

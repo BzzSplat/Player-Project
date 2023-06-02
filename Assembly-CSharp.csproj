@@ -56,37 +56,56 @@
     <Analyzer Include="D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Misc Interactables\Seat.cs" />
-    <Compile Include="Assets\Scripts\Player\Health.cs" />
+    <Compile Include="Assets\Scripts\RadiusColorHeight.cs" />
     <Compile Include="Assets\Scripts\Equips\Welder.cs" />
     <Compile Include="Assets\Scripts\Explosive.cs" />
     <Compile Include="Assets\Scripts\Equips\Linker.cs" />
-    <Compile Include="Assets\Scripts\Machines\Smelter.cs" />
-    <Compile Include="Assets\Scripts\Changers\MaterialChanger.cs" />
-    <Compile Include="Assets\Scripts\Player\ResourceManager.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Machines\Resource Focus\Smelter.cs" />
+    <Compile Include="Assets\Scripts\Living\Player\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\TimedDelete.cs" />
-    <Compile Include="Assets\Scripts\Machines\Relay.cs" />
-    <Compile Include="Assets\Scripts\Machines\Miner.cs" />
-    <Compile Include="Assets\Scripts\Machines\Generator.cs" />
-    <Compile Include="Assets\Scripts\Player\GUI_Menu.cs" />
-    <Compile Include="Assets\Scripts\Machines\Machine.cs" />
-    <Compile Include="Assets\Scripts\explosion.cs" />
+    <Compile Include="Assets\Scripts\Machines\Resource Focus\Sparker.cs" />
+    <Compile Include="Assets\Scripts\Living\Player\GUI_Menu.cs" />
+    <Compile Include="Assets\Scripts\Miniplanets\MP_civil.cs" />
+    <Compile Include="Assets\Scripts\Machines\Resource Focus\Machine.cs" />
     <Compile Include="Assets\Scripts\Machines\BoomBox.cs" />
     <Compile Include="Assets\Scripts\Changers\TextChanger.cs" />
-    <Compile Include="Assets\Scripts\Dummy.cs" />
-    <Compile Include="Assets\Scripts\Equips\PhysicsGunInteractionBehavior.cs" />
-    <Compile Include="Assets\Scripts\Planets\InAtmosphere.cs" />
+    <Compile Include="Assets\Scripts\Popups\ComputerPopup.cs" />
+    <Compile Include="Assets\Scripts\Planets\tickets\Ticket.cs" />
     <Compile Include="Assets\Scripts\Popups\SiloPopup.cs" />
     <Compile Include="Assets\Scripts\InteractableObject.cs" />
-    <Compile Include="Assets\Scripts\Planets\Moveplanet.cs" />
     <Compile Include="Assets\Scripts\Equips\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Equips\Equip.cs" />
-    <Compile Include="Assets\Scripts\Player\RigidMov.cs" />
+    <Compile Include="Assets\Scripts\Living\Player\RigidMov.cs" />
+    <Compile Include="Assets\Scripts\Machines\Button.cs" />
     <Compile Include="Assets\Scripts\Popups\SpawnButton.cs" />
+    <Compile Include="Assets\Scripts\Living\Player\CamControl.cs" />
+    <Compile Include="Assets\Scripts\Popups\PopopBase.cs" />
+    <Compile Include="Assets\Scripts\Machines\Resource Focus\Silo.cs" />
+    <Compile Include="Assets\Scripts\Misc Interactables\Seat.cs" />
+    <Compile Include="Assets\Scripts\Living\Player\Health.cs" />
+    <Compile Include="Assets\Scripts\Computer\WireTask.cs" />
+    <Compile Include="Assets\Scripts\Machines\SpawnPad.cs" />
+    <Compile Include="Assets\Scripts\TeleportZone.cs" />
+    <Compile Include="Assets\Scripts\Planets\Attractor.cs" />
+    <Compile Include="Assets\Scripts\Changers\MaterialChanger.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Machines\Resource Focus\Relay.cs" />
+    <Compile Include="Assets\Scripts\Machines\Resource Focus\Miner.cs" />
+    <Compile Include="Assets\Scripts\Computer\Computer.cs" />
+    <Compile Include="Assets\Scripts\Equips\HackingTool.cs" />
+    <Compile Include="Assets\Scripts\explosion.cs" />
+    <Compile Include="Assets\Scripts\Planets\tickets\TicketMaster.cs" />
+    <Compile Include="Assets\Scripts\Popups\TaskMiniPop.cs" />
+    <Compile Include="Assets\Scripts\Living\Dummy.cs" />
+    <Compile Include="Assets\Scripts\Equips\PhysicsGunInteractionBehavior.cs" />
+    <Compile Include="Assets\Scripts\Planets\InAtmosphere.cs" />
+    <Compile Include="Assets\Scripts\Computer\ComputerWorker.cs" />
+    <Compile Include="Assets\Scripts\Planets\Moveplanet.cs" />
+    <Compile Include="Assets\Scripts\Planets\PlanetSmash.cs" />
+    <Compile Include="Assets\Scripts\Equips\Equip.cs" />
+    <Compile Include="Assets\Scripts\Machines\Thruster.cs" />
     <Compile Include="Assets\Scripts\Equips\LaserWeapon.cs" />
-    <Compile Include="Assets\Scripts\Player\CamControl.cs" />
-    <Compile Include="Assets\Scripts\Machines\Silo.cs" />
+    <Compile Include="Assets\Scripts\Planets\SpeedLimit.cs" />
+    <Compile Include="Assets\Scripts\Computer\ComputerTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license&amp;credits.txt" />
@@ -663,14 +682,17 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -678,8 +700,14 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -690,8 +718,35 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

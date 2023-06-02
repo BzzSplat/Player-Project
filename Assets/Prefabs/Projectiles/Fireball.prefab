@@ -4902,6 +4902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
   explosion: {fileID: 177072438684870246, guid: 43af21b6f1bfcf045a43fd6d629a41ef, type: 3}
+  contactExplosive: 1
 --- !u!114 &-3974041303901342365
 MonoBehaviour:
   m_ObjectHideFlags: 0

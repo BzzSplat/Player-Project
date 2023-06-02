@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Moveplanet : MonoBehaviour
 {
-    public int speed;
-    Vector3 startPosition;
-    Vector3 endPosition;
+    public Vector3 speed;
     Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(speed, 0, 0);
-        startPosition = this.transform.position;
-        endPosition = new Vector3(-10, 0, 0);
+        rb.velocity = speed;
     }
 
     void FixedUpdate()

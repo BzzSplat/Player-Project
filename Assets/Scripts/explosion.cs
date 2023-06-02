@@ -6,6 +6,7 @@ public class explosion : MonoBehaviour
 {
     public float radius;
     public float power;
+    public int[] affectedLayers;
 
     void Start()
     {
@@ -13,6 +14,12 @@ public class explosion : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
         foreach (Collider hit in colliders)
         {
+            bool correctLayer = true;
+            foreach(int l in affectedLayers)
+            {
+                correctLayer = hit.gameObject.layer == l;
+            }
+
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
             if (rb != null)

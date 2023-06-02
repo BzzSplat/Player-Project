@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 90, y: 90}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8806740487471719694
 CanvasRenderer:
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 74
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -107,7 +107,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8806740488561143945}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thing: {fileID: 8043435602987838690, guid: 885483ce51b860b4b9503d9d6f58a6b0, type: 3}
   guiScript: {fileID: 0}
-  ID: 
-  cost: 
+  ID: 01000000
+  cost: 01000000
 --- !u!114 &6861313327339436268
 MonoBehaviour:
   m_ObjectHideFlags: 0

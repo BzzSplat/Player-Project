@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     AudioSource audioPlayer;
     [SerializeField]
+    float pitchShift;
+    [SerializeField]
     AudioClip shootSound1, shootSound2;
 
     public GameObject Projectile1;
@@ -49,8 +51,11 @@ public class Weapon : MonoBehaviour
             if(fire1_Raycast)
                 Castaray(ray1Range, ray1Damage, ray1HitEffect);
 
-            if(shootSound1)
+            if (shootSound1)
+            {
+                audioPlayer.pitch = Mathf.Clamp(1 + Random.Range(-pitchShift, pitchShift), 0, 3);
                 audioPlayer.PlayOneShot(shootSound1);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -60,7 +65,10 @@ public class Weapon : MonoBehaviour
                 Castaray(ray2Range, ray2Damage, ray2HitEffect);
 
             if (shootSound2)
+            {
+                audioPlayer.pitch = Random.Range(-pitchShift, pitchShift);
                 audioPlayer.PlayOneShot(shootSound2);
+            }
         }
 
         //Thanks to Plai on YouTube
@@ -90,12 +98,9 @@ public class Weapon : MonoBehaviour
     {
         Ray ray = GetComponent<Weapon>().camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        Vector3 endPoint;
 
-        if (Physics.Raycast(ray, out hit))
-            endPoint = hit.point;
-        else
-            endPoint = ray.GetPoint(1000);
+        if (Physics.Raycast(ray, out hit, range))
+            Instantiate(hitEffect, hit.point, Quaternion.identity, hit.transform);
 
         if (hit.transform)
         {
@@ -113,7 +118,7 @@ public class Weapon : MonoBehaviour
                 hit.transform.GetComponent<Dummy>().health -= damage;
             }
 
-            Instantiate(hitEffect, endPoint, Quaternion.identity, hit.transform);
+            
         }
     }
 

@@ -7,3 +7,4 @@ WarmedxMints, https://github.com/WarmedxMints
 Original/initial script "Gravity Gun": https://pastebin.com/w1G8m3dH
 Original author: Jake Perry, reddit.com/user/nandos13
 
+Vagner Seibert - fibonacci sphere script

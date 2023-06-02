@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class MaterialChanger : MonoBehaviour
 {
-    [Header("Colors")]
+    Renderer rend;
     [SerializeField]
     Color mainColor, emmissionColor;
     [SerializeField]
-    bool useMainColor, useEmissionColor;
+    bool useMainColor, useEmissionColor, continuousUpdate, scroll;
+    [SerializeField]
+    Vector2 scrollSpeed;
+    
 
     void Start()
     {
-        Renderer rend = GetComponent<Renderer>();
+        rend = GetComponent<Renderer>();
+        work();
+    }
 
+    private void Update()
+    {
+        if(scroll)
+            rend.material.SetTextureOffset("_MainTex", rend.material.mainTextureOffset + (scrollSpeed * Time.deltaTime));
+
+        if (continuousUpdate)
+            work();
+    }
+
+    void work()
+    {
         if (useMainColor)
             rend.material.color = mainColor;
 

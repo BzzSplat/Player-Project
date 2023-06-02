@@ -6,13 +6,15 @@ public class Explosive : MonoBehaviour
 {
     public GameObject creator;
     public GameObject explosion;
+    [SerializeField]
+    bool contactExplosive;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == creator)
-            return;
-
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if (contactExplosive && collision.gameObject != creator)
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 }

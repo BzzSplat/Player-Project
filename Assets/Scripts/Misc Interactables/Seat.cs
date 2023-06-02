@@ -5,13 +5,14 @@ using UnityEngine;
 public class Seat : InteractableObject
 {
     GameObject seated;
+    Vector3 oldRotation;
 
     private void Start()
     {
         needsPlayer = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //obj1.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
         if (seated)
@@ -19,6 +20,7 @@ public class Seat : InteractableObject
             Quaternion qr = Quaternion.identity;
             Vector3 p = new Vector3(0, seated.transform.localRotation.eulerAngles.y, 0);
             qr.eulerAngles = p;
+
             seated.transform.localRotation = qr;
         }
 

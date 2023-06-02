@@ -9,11 +9,6 @@ public class Equip : MonoBehaviour
     [SerializeField]
     Transform spawnPos;
 
-    private void Start()
-    {
-        StartCoroutine(SwitchEquip(Items[0]));
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && Items[0])

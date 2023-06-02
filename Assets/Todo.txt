@@ -1,13 +1,11 @@
 welder make clicked surface stick to other surface, stop it from only pointing "up" when Rclick weld
 https://answers.unity.com/questions/665774/instantiate-prefab-facing-away-from-its-collision.html
 toolbox radial
-refinery and tier 2 metal
 (wait till I even Make the relays) relay checkDistance function, causes a chain reaction down a line of relays to check if they are all within reach of eachother and break off relays and machines that are not
-wires (basically wiremod for things that need activation like buttons, thrusters, and chair connections)
 
 game manager constants
-array of all material images, when somethign needs a lsit of materials, it uses the array's length and the elements for the images
-find solution to friction problem
+array of all material images, when somethign needs a list of materials, it uses the array's length and the elements for the images
+make large numbers in the silo turn into scientific notation above 999,999 (format for first number would be 1.00x10^6)
 
 Fix movement with moving planets
 player velocity = normal velocity + movement vector3 (acceleration problem)

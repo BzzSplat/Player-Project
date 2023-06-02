@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SiloPopup : MonoBehaviour
+public class SiloPopup : PopopBase
 {
     [SerializeField]
     Text[] materials;
     public Silo silo;
-    public CamControl cam;
     [SerializeField]
     Transform machinesMenu;
     [SerializeField]
@@ -18,16 +17,11 @@ public class SiloPopup : MonoBehaviour
 
     void Update()
     {
+        if(silo)
         for(int i = 0; i < materials.Length; i++)
         {
             materials[i].text = silo.materials[i].ToString();
         }
-    }
-
-    public void close()
-    {
-        cam.trapMouse();
-        Destroy(gameObject);
     }
 
     private void Start() //check silo connections and add them to scroll menu

@@ -343,6 +343,9 @@ MonoBehaviour:
   emmissionColor: {r: 0, g: 0.5019608, b: 0.5019608, a: 0}
   useMainColor: 0
   useEmissionColor: 1
+  continuousUpdate: 0
+  scroll: 0
+  scrollSpeed: {x: 0, y: 0}
 --- !u!1 &8564061521767708871
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +420,7 @@ Rigidbody:
   m_Mass: 800
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -463,6 +466,7 @@ MonoBehaviour:
   canWork: 1
   lines: []
   popup: {fileID: 5182712022017930948, guid: 888c7a509b67ab54690c954cadb6ba0d, type: 3}
+  owner: {fileID: 0}
 --- !u!1 &8564061521953775516
 GameObject:
   m_ObjectHideFlags: 0
